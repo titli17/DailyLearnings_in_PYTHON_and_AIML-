@@ -277,9 +277,9 @@ The block of the function starts with a keyword def after which the function nam
 Syntax:
 
     def functionname(parameters):
-    “function_docstring”
-    statement(s)
-    return [expression]
+    	“function_docstring”
+    	statement(s)
+    	return [expression]
 
 Parameters and arguments are the values or expressions passed to the functions between parentheses (()). 
 
