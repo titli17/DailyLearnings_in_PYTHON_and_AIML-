@@ -288,4 +288,219 @@ A function is called using the name with which it was defined earlier, followed 
 HackerRank: Solved challenges using functions on HackerRank.
 
 
+### DAY 7:
+
+#### Break and Continue Statements:
+The break and continue statements are often useful in a while loop as well as in a for loop. The break statement exits from the loop and transfers the execution from the loop to the statement that is immediately following the loop. The continue statement causes execution to immediately continue at the start of the loop, it skips the execution of the remaining body part of the loop.
+
+Example:
+
+	count = 2
+	while True:
+		print count
+		count = count + 2
+		if count >= 12:
+ 			break 				# breaks the loop
+
+Output:
+
+2 
+
+4
+
+6
+
+8
+
+10
+
+Example:
+
+	for i in range(1,10):
+	if i % 2 != 0:
+ 		continue 			# if condition becomes true, it skips the print part
+		print i
+
+Output:
+
+2 
+
+4
+
+6
+
+8
+
+
+#### Recursive Function:
+Recursion is the process of repeating something in a self-similar way. In the programming context, the meaning of recursion remains the same. Here, if a function, procedure or method calls itself, it is called recursive.
+
+Example:
+
+	def fact(x):
+		if x==1:
+			return 1
+		else:
+			return(x*fact(x-1))
+	fact(3)
+
+Output:
+
+6
+
+
+### DAY 8:
+
+#### Tuples:
+Tuples are the sequence or series values of different types separated by commas (,). Just like strings and lists, values in tuples can also be accessed by their index values, which are integers starting from 0.
+The main difference between lists and tuples is that tuples are immutable. We cannot edit the elements of a tuple neither can we add new items to it once it is created.
+
+In order to create a tuple, all the items or elements are placed inside parentheses separated by commas and assigned to a variable.
+
+
+#### Tuple Assignment:
+Tuple allows the assignment of values to a tuple of variables on the left side of the assignment from the tuple of values on the right side of the assignment.
+The number of variables in the tuple on the left of the assignment must match the number of elements/items in the tuple on the right of the assignment.
+
+Example:
+
+	Anil = (‘221’,’Anil’,’Rahul’,’Delhi’,1971,’Jaipur Gwalior’)
+	(id,fst_name,lst_name,city,year_of_birth,birth_place) = Anil
+	print id
+	print fst_name
+
+Output:
+
+221
+
+John
+
+
+### DAY 9:
+
+#### Dictionaries:
+Dictionary is an unordered collection of items or elements. All other compound data types in Python have only values as their elements or items whereas the dictionary has a key: value pair. Each value is associated with a key. Keys can be of any data type.
+
+To create a dictionary the key and its value are separated by a colon (:) between them. The items or elements in a dictionary are separated by commas and all the elements must be enclosed in curly braces. The values in a dictionary can be duplicated, but the keys in the dictionary are unique.
+
+In order to access the elements from a dictionary, we can use the value of the key enclosed in square brackets. Python also provides a get() method that is used with the key in order to access the value. There is a difference in both the accessing methods.
+
+Example:
+
+	dict1 = {‘name’ : ‘John’, ‘age’ : 27}
+	dict1[‘name’]
+
+Output:
+
+‘John’
+
+Dictionaries in Python are mutable. The values in a dictionary can be changed, added or deleted. If the key is present in the dictionary, then the associated value with that key is updated or changed; otherwise a new key: value pair is added.
+
+Example:
+
+	dict1 = {‘name’ : ‘John’, ‘age’ : 27}
+	dict1[‘age’] = 30 # updating a value
+	print dict1
+	dict1[‘address’] = ‘Alaska’ # adding a key: value
+	print dict1
+
+Output:
+
+{‘age’: 30, ‘name’: ‘John’} 
+
+{‘age’: 30, ‘name’: ‘John’, ‘address’: ‘Alaska’}
+
+The items or elements from a dictionary can be removed or deleted by using pop()method. pop()method removes that item from the dictionary for which the key is provided. It also returns the value of the item. 
+
+Furthermore, there is a popitem()method in Python. popitem()method is used to remove or delete and return an arbitrary item from the dictionary.
+
+The clear() method removes all the items or elements from a dictionary at once. When this operation is performed, the dictionary becomes an empty dictionary.
+
+Python also provides a del keyword, which deletes the dictionary itself. When this operation is performed, the dictionary is deleted from the memory and it ceases to exist.
+
+
+### DAY 10:
+
+#### Sets:
+In Python there is one data type which is an unordered collection of data known as Set. A Set does not contain any duplicate values or elements.
+
+Union, Intersection, Difference and Symmetric Difference are some operations which are performed on sets.
+
+Union:
+
+Union operation performed on two sets returns all the elements from both the sets. It is performed by using & operator.
+
+Intersection: 
+
+Intersection operation performed on two sets returns all the element which are common or in both the sets. It is performed by using | operator.
+
+Difference: 
+
+Difference operation performed on two sets set1 and set2 returns the elements which are present on set1 but not in set2. It is performed by using – operator.
+
+Symmetric Difference: 
+
+Symmetric Difference operation performed on two sets returns the element which are present in either set1 or set2 but not in both. It is performed by using ^ operator.
+
+Example:
+
+	set1 = set([1, 2, 4, 1, 2, 8, 5, 4])
+	set2 = set([1, 9, 3, 2, 5])
+	intersection = set1 & set2
+	union = set1 | set2
+	difference = set1 - set2
+	symm_diff = set1 ^ set2
+	print(intersection)
+	print(union)
+	print(difference)
+	print(symm_diff)
+
+Output:
+
+set([1, 2, 5])
+
+set([1, 2, 3, 4, 5, 8, 9])
+
+set([8, 4])
+
+set([3, 4, 8, 9])
+
+
+HackerRank: Solved challenges using functions on HackerRank.
+
+
+### DAY 11:
+
+#### Modules:
+Modules are simply files with the “.py” extension containing Python code that can be imported inside another Python Program. In simple terms, we can consider a module to be the same as a code library or a file that contains a set of functions that we want to include in your application.
+
+The module contains the following components:
+•	Definitions and implementation of classes,
+•	Variables
+•	Functions that can be used inside another program.
+
+To create a module, we have to save the code that we wish in a file with the file extension “.py”. Then, the name of the Python file becomes the name of the module.
+
+Example:
+
+A function is created with the name “welcome” and save this file with the name mymodule.py i.e. name of the file, and with the extension “.py”.
+We saved the following code in a file named mymodule.py
+
+	def welcome(name):
+  		print("Hello, " + name+,” !”)
+
+To incorporate the module into our program, we will use the import keyword, and to get only a few or specific methods or functions from a module, we use the from keyword.
+
+	import mymodule
+	mymodule.welcome("Titli Ghoshl")
+
+Output:
+
+Hello, Titli Ghosh !
+
+HackerRank: Solved challenges using functions on HackerRank.
+
+
+
+
 
