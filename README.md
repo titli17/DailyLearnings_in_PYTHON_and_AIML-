@@ -640,5 +640,178 @@ Output:
 (2, 4)
 
 
+### DAY 13:
+
+#### Commonly used arithmetic operations in NumPy:
+
+Addition------	+	add()
+
+Subtraction------	-	subtract()
+
+Multiplication------	*	multiply()
+
+Division------	/	divide()
+
+Exponentiation------	**	power()
+
+Modulus------		%	mod()
+
+
+	import numpy as np
+	
+	first_array = np.array([1, 3, 5, 7])
+	second_array = np.array([2, 4, 6, 8])
+	
+	result1 = first_array + second_array
+	print("Using the + operator:",result1) 
+	
+	result2 = np.add(first_array, second_array)
+	print("Using the add() function:",result2)
+
+Output:
+
+Using the + operator: [ 3  7 11 15]
+
+Using the add() function: [ 3  7 11 15]
+
+#### Some of the most commonly used functions in NumPy:
+
+Array Creation Functions------>		np.array(), np.zeros(), np.ones(), np.empty(), etc.
+
+Array Manipulation Functions------>		np.reshape(), np.transpose(), etc.
+
+Array Mathematical Functions------>		np.add(), np.subtract(), np.sqrt(), np.power(), etc.
+
+Array Statistical Functions------>		np.median(), np.mean(), np.std(), and np.var().
+
+Array Input and Output Functions------>	np.save(), np.load(), np.loadtxt(), etc.
+
+#### Reshaping Arrays:
+
+Reshaping means changing the shape of an array.
+The shape of an array is the number of elements in each dimension.
+By reshaping we can add or remove dimensions or change number of elements in each dimension.
+
+	import numpy as np
+	
+	arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+	newarr = arr.reshape(4, 3)
+	print(newarr)
+
+Output:
+
+[[ 1  2  3]
+
+ [ 4  5  6]
+ 
+ [ 7  8  9]
+ 
+ [10 11 12]]
+
+Flattening array means converting a multidimensional array into a 1D array.
+We can use reshape(-1) to do this.
+
+	import numpy as np
+	
+	arr = np.array([[1, 2, 3], [4, 5, 6]])
+	newarr = arr.reshape(-1)
+	print(newarr)
+
+Output:
+
+[1  2  3  4  5  6]
+
+
+#### Iterating Arrays:
+
+Iterating means going through elements one by one.
+As we deal with multi-dimensional arrays in numpy, we can do this using basic for loop of python.
+
+import numpy as np
+
+	arr = np.array([[1, 2, 3], [4, 5, 6]])
+	for x in arr:
+		print(x)
+  
+Output:
+
+[1 2 3]
+
+[4 5 6]
+
+
+To return the actual values, the scalars, we have to iterate the arrays in each dimension.
+
+import numpy as np
+
+	arr = np.array([[1, 2, 3], [4, 5, 6]])
+	for x in arr:
+		for y in x:
+			print(y)
+
+Output:
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+#### Enumerated Iteration:
+
+Enumeration means mentioning sequence number of somethings one by one.
+Sometimes we require corresponding index of the element while iterating, the ndenumerate() method can be used for those usecases.
+
+import numpy as np
+
+	arr = np.array([1, 2, 3])
+	for idx, x in np.ndenumerate(arr):
+		print(idx, x)
+
+Output:
+
+(0,) 1
+
+(1,) 2
+
+(2,) 3
+
+#### Joining NumPy Arrays:
+
+Joining means putting contents of two or more arrays in a single array.
+
+	import numpy as np
+
+	arr1 = np.array([1, 2, 3])
+	arr2 = np.array([4, 5, 6])
+	arr = np.concatenate((arr1, arr2))
+	print(arr)
+
+Output:
+
+[1  2  3  4  5  6]
+
+
+	import numpy as np
+	
+	arr1 = np.array([[1, 2], [3, 4]])
+	arr2 = np.array([[5, 6], [7, 8]])
+	arr = np.concatenate((arr1, arr2), axis=1)
+	print(arr)
+
+Output:
+
+[[1 2 5 6]
+
+ [3 4 7 8]]
+
+
+
 
 
