@@ -501,6 +501,144 @@ Hello, Titli Ghosh !
 HackerRank: Solved challenges using functions on HackerRank.
 
 
+### DAY 12:
+
+Numpy is a general-purpose array-processing package. It provides a high-performance multidimensional array object and tools for working with these arrays. The array object in NumPy is called ndarray, it provides a lot of supporting functions that make working with ndarray very easy.
+
+Arrays are very frequently used in data science, where speed and resources are very important.
+
+NumPy arrays are stored at one continuous place in memory unlike lists, so processes can access and manipulate them very efficiently.
+This behavior is called locality of reference in computer science.
+This is the main reason why NumPy is faster than lists. 
+
+#### Installation :
+
+In the terminal of the computer, writing the following command to install NumPy:
+
+	pip install numpy
+
+Once NumPy is installed, import it in your applications by adding the import keyword:
+
+	import numpy as np
+
+
+Creating array:
+
+We can create a NumPy ndarray object by using the array() function: 
+
+	import numpy as np
+	arr = np.array([1, 2, 3, 4, 5])
+	print(arr)
+
+Output:
+
+[1  2  3  4  5]
+
+#### 2-D Arrays:
+
+An array that has 1-D arrays as its elements is called a 2-D array.
+These are often used to represent matrix or 2nd order tensors.
+import numpy as np
+
+	arr = np.array([[1, 2, 3], [4, 5, 6]])
+	print(arr)
+
+Output:
+
+[ [1  2  3]
+
+  [4  5  6] ]
+
+
+Array indexing is the same as accessing an array element.
+You can access an array element by referring to its index number.
+The indexes in NumPy arrays start with 0, meaning that the first element has index 0, and the second has index 1 etc.
+
+To access elements from 2-D arrays we can use comma separated integers representing the dimension and the index of the element.
+Think of 2-D arrays like a table with rows and columns, where the dimension represents the row and the index represents the column.
+
+Use negative indexing to access an array from the end.
+
+NumPy has some extra data types, and refer to data types with one character, like i for integers, u for unsigned integers etc.
+Below is a list of all data types in NumPy and the characters used to represent them.
+•	i - integer
+
+•	b - boolean
+
+•	u - unsigned integer
+
+•	f - float
+
+•	c - complex float
+
+•	m - timedelta
+
+•	M - datetime
+
+•	O - object
+
+•	S - string
+
+•	U - unicode string
+
+•	V - fixed chunk of memory for other type ( void )
+
+The NumPy array object has a property called dtype that returns the data type of the array:
+
+	import numpy as np
+	arr = np.array([1, 2, 3, 4])
+	print(arr.dtype)
+
+Output: int64
+
+We use the array() function to create arrays, this function can take an optional argument: dtype that allows us to define the expected data type of the array elements:
+
+	import numpy as np
+	arr = np.array([1, 2, 3, 4], dtype='S')
+	print(arr)
+	print(arr.dtype)
+
+Output:
+
+[b'1' b'2' b'3' b'4']
+
+|S1
+
+The main difference between a copy and a view of an array is that the copy is a new array, and the view is just a view of the original array.
+
+The copy owns the data and any changes made to the copy will not affect original array, and any changes made to the original array will not affect the copy.
+
+The view does not own the data and any changes made to the view will affect the original array, and any changes made to the original array will affect the view.
+
+	import numpy as np
+ 
+	arr = np.array([1, 2, 3, 4, 5])
+	x = arr.copy()
+	y = arr.view()
+	arr[0] = 42
+	
+	print(arr)
+	print(x)
+	print(y)
+
+Output:
+
+[42  2  3  4  5]
+
+[1 2 3 4 5]
+
+[42  2  3  4  5]
+
+NumPy arrays have an attribute called shape that returns a tuple with each index having the number of corresponding elements.
+
+	import numpy as np
+	
+	arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+	print(arr.shape)
+
+Output:
+(2, 4)
+
 
 
 
