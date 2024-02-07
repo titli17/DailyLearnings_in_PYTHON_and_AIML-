@@ -921,3 +921,163 @@ Power (A ** B)
 ![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/2b78c239-df1d-45ce-bafd-9117cbd83995)
 
 
+### DAY 14:
+
+#### TREES:
+
+A tree is a nonlinear hierarchical data structure that consists of nodes connected by edges.
+
+#### Terminologies:
+
+The first node in a tree is called the root node.
+
+A link connecting one node to another is called an edge.
+
+A parent node has links to its child nodes. Another word for a parent node is internal node.
+
+A node can have zero, one, or many child nodes.
+
+A node can only have one parent node.
+
+Nodes without links to other child nodes are called leaves, or leaf nodes.
+
+The tree height is the maximum number of edges from the root node to a leaf node. The height of the tree above is 2.
+
+The height of a node is the maximum number of edges between the node and a leaf node.
+
+The tree size is the number of nodes in the tree.
+
+
+#### BINARY TREES:
+
+It is either empty or has finite collection of elements. It has atmost 2 subtrees. The subtrees of each element are ordered.
+
+Types of Binary Trees:
+
+A balanced Binary Tree has at most 1 in difference between its left and right subtree heights, for each node in the tree.
+
+A complete Binary Tree has all levels full of nodes, except the last level, which is can also be full, or filled from left to right. The properties of a complete Binary Tree means it is also balanced.
+
+A full Binary Tree is a kind of tree where each node has either 0 or 2 child nodes.
+
+A perfect Binary Tree has all leaf nodes on the same level, which means that all levels are full of nodes, and all internal nodes have two child nodes.The properties of a perfect Binary Tree means it is also full, balanced, and complete.
+
+
+Traversal:
+
+Breadth First Search (BFS) is when the nodes on the same level are visited before going to the next level in the tree. This means that the tree is explored in a more sideways direction.
+
+Depth First Search (DFS) is when the traversal moves down the tree all the way to the leaf nodes, exploring the tree branch by branch in a downwards direction.
+
+There are three different types of DFS traversals:
+
+##### 1.pre-order:
+
+Process the root.
+
+Traverse the left sub tree of root in pre-order
+
+Traverse the right sub tree of root in pre-order
+
+
+##### 2.in-order:
+
+Traverse the left sub tree of root in pre-order
+
+Process the root
+
+Traverse the right sub tree of root in pre-order
+
+
+##### 3.post-order:
+
+Traverse the left sub tree of root in pre-order
+
+Traverse the right sub tree of root in pre-order
+
+Process the root
+
+
+![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/a2101d16-c588-40a8-921a-80fe9004bd7a)
+
+For this tree 
+
+Pre-order traversal: R,A,C,D,B,E,F,G
+
+In-order traversal: C,A,D,R,E,B,G,F
+
+Post-order traversal: C,D,A,E,G,F,B,R
+
+
+#### BINARY SEARCH TREES:
+
+A Binary Search Tree is a Binary Tree where every node's left child has a lower value, and every node's right child has a higher value. No 2 elements have the same key.
+
+A clear advantage with Binary Search Trees is that operations like search, delete, and insert are fast and done without having to shift values in memory.
+
+
+#### AVL TREES:
+
+AVL trees are self-balancing, which means that the tree height is kept to a minimum so that a very fast runtime is guaranteed for searching, inserting and deleting nodes, with time complexity 
+O(logn). It was introduced by Adelson-Velskii and Landis.
+
+If T is a non-empty binary tree with Tl and Tr as its left and right sub tree, then T is an AVL tree iff:
+
+1. |hl-hr|<=1, where hl and hr are the heights of Tl and Tr
+
+2. Tl and Tr are also AVL trees.
+
+
+The node in AVL tree has an additional field bf(balance factor).   
+
+bf = hl-hr
+
+bf = -1 for hl<hr
+
+   = 0  for hl=hr
+
+   = +1 for hl>hr
+
+
+To restore balance in an AVL Tree, left or right rotations are done, or a combination of left and right rotations.
+
+
+Left-Left (LL)	
+
+The unbalanced node and its left child node are both left-heavy.	A single right rotation is required.
+
+
+Right-Right (RR)	
+
+The unbalanced node and its right child node are both right-heavy.	A single left rotation is required.
+
+
+Left-Right (LR)	
+
+The unbalanced node is left heavy, and its left child node is right heavy.	First do a left rotation on the left child node, then do a right rotation on the unbalanced node.
+
+
+Right-Left (RL)	
+
+The unbalanced node is right heavy, and its right child node is left heavy.	First do a right rotation on the right child node, then do a left rotation on the unbalanced node.
+
+
+#### B-Trees:
+
+B-Tree is known as a self-balancing tree as its nodes are sorted in the inorder traversal. In B-tree, a node can have more than two children. B-tree has a height of logM N (Where ‘M’ is the order of tree and N is the number of nodes). And the height is adjusted automatically at each update. In the B-tree data is sorted in a specific order, with the lowest value on the left and the highest value on the right. To insert the data or key in B-tree is more complicated than a binary tree. Some conditions must be held by the B-Tree:
+
+1.All the leaf nodes of the B-tree must be at the same level.
+
+2.Above the leaf nodes of the B-tree, there should be no empty sub-trees.
+
+3.B- tree’s height should lie as low as possible.
+
+
+#### B+ Trees:
+
+B+ tree eliminates the drawback B-tree used for indexing by storing data pointers only at the leaf nodes of the tree. Thus, the structure of leaf nodes of a B+ tree is quite different from the structure of internal nodes of the B tree. It may be noted here that, since data pointers are present only at the leaf nodes, the leaf nodes must necessarily store all the key values along with their corresponding data pointers to the disk file block, to access them. Moreover, the leaf nodes are linked to providing ordered access to the records. The leaf nodes, therefore form the first level of the index, with the internal nodes forming the other levels of a multilevel index. Some of the key values of the leaf nodes also appear in the internal nodes, to simply act as a medium to control the searching of a record.
+
+#### B-Trees vs B+ Trees:
+
+![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/76a3fded-0e8c-4fd2-97f6-17807608e502)
+
