@@ -639,6 +639,50 @@ NumPy arrays have an attribute called shape that returns a tuple with each index
 Output:
 (2, 4)
 
+### Solving HackerRank Problems:
+
+#### Q.1)You are given a NxM integer array matrix with space separated elements (N = rows and M = columns).Your task is to print the transpose and flatten results.
+
+	import numpy as np
+	
+	arr1=list(map(int,input().split()))
+	
+	arr2=[]
+	for i in range(arr1[0]):
+	    arr3=list(map(int,input().split()))
+	    arr2.append(arr3)
+	
+	nparray=np.array(arr2)
+	print(np.transpose(nparray))
+	print(nparray.flatten())
+
+ ![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/bdf748f0-21f1-49f2-9c0b-0057a801b0cd)
+
+ 
+#### Q.2)You are given two integer arrays of size NxP and MxP ( N&M  are rows,and P is the column). Your task is to concatenate the arrays along axis 0.
+
+	import numpy as np
+	
+	list1=list(map(int,input().split()))
+	
+	arr1=[]
+	arr2=[]
+	for i in range(list1[0]):
+	    arr3=list(map(int,input().split()))
+	    arr1.append(arr3)
+	    
+	for i in range(list1[1]):
+	    arr3=list(map(int,input().split()))
+	    arr2.append(arr3)
+	    
+	array1=np.array(arr1)
+	array2=np.array(arr2)
+	
+	print(np.concatenate((array1,array2),axis=0))
+
+ ![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/bf46ec55-e10d-4e65-a191-90198b32e166)
+
+
 
 ### DAY 13:
 
@@ -811,7 +855,69 @@ Output:
 
  [3 4 7 8]]
 
+### Solving HackerRank Problems:
 
+#### Q.1)You are given two integer arrays,  and  of dimensions X.Your task is to perform the following operations:
 
+Add (A + B)
+
+Subtract (A - B)
+
+Multiply (A * B)
+
+Integer Division (A / B)
+
+Mod (A % B)
+
+Power (A ** B)
+
+	import numpy as np
+	
+	list1=list(map(int,input().split()))
+	l1=[]
+	for i in range(list1[0]):
+	    list2=list(map(int,input().split()))
+	    l1.append(list2)
+	    
+	l2=[]
+	for i in range(list1[0]):
+	    list3=list(map(int,input().split()))
+	    l2.append(list3)
+	
+	A=np.array(l1)
+	B=np.array(l2)
+	
+	print(A+B)
+	print(A-B)
+	print(A*B)
+	print(np.floor_divide(A,B))
+	print(A%B)
+	print(A**B)
+	
+![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/b496ef46-8050-4208-8137-233202dc92a4)
+
+#### Q.2)You are given two arrays A and B. Both have dimensions of NxN.Your task is to compute their matrix product.
+
+	import numpy as np
+	
+	l=int(input())
+	
+	l1=[]
+	l2=[]
+	
+	for i in range(l):
+	    arr=list(map(int,input().split()))
+	    l1.append(arr)
+	    
+	for i in range(l):
+	    arr=list(map(int,input().split()))
+	    l2.append(arr)
+	    
+	A=np.array(l1)
+	B=np.array(l2)
+	
+	print(np.dot(A,B))
+
+![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/2b78c239-df1d-45ce-bafd-9117cbd83995)
 
 
