@@ -1082,6 +1082,35 @@ B+ tree eliminates the drawback B-tree used for indexing by storing data pointer
 ![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/76a3fded-0e8c-4fd2-97f6-17807608e502)
 
 
+Top questions from Tree:
+
+1.Maximum Depth of Binary Tree
+
+2.Check if two trees have same structure
+
+3.Invert/Flip Binary Tree
+
+4.Binary Tree Maximum Path Sum
+
+5.Binary Tree Level Order Traversal
+
+6.Serialize and Deserialize Binary Tree
+
+7.Subtree of Another Tree
+
+8.Construct Binary Tree from Preorder and Inorder Traversal
+
+9.Validate Binary Search Tree
+
+10.Kth Smallest Element in a BST
+
+11.Lowest Common Ancestor of BST
+
+12.Implement Trie (Prefix Tree)
+
+13.Add and Search Word
+
+
 ### DAY 15:
 
 #### General Tree:
@@ -1214,19 +1243,6 @@ B+ tree eliminates the drawback B-tree used for indexing by storing data pointer
 	C.left=F
 	C.right=G
 
-##### Deleting the Nodes :
-
-To delete a node from a binary tree (BST) in Python, you need to consider different cases:
-
-1.If the node to be deleted is a leaf node (no children), simply remove it from its parent.
-
-2.If the node to be deleted has only one child, replace the node with its child.
-
-3.If the node to be deleted has two children, find the inorder successor (or predecessor), copy its data to the node to be deleted, and then delete the inorder successor (or predecessor).
-
-
-
-
 
 ##### Traversals:
 
@@ -1352,6 +1368,20 @@ Output:
 Output:
 
 ['8', '20', '12', '25', '40', '30', '22']
+
+
+##### Deleting the Nodes :
+
+To delete a node from a binary tree in Python, you need to consider different cases:
+
+1.If the node to be deleted is a leaf node (no children), simply remove it from its parent.
+
+2.If the node to be deleted has only one child, replace the node with its child.
+
+3.If the node to be deleted has two children, find the inorder successor (or predecessor), copy its data to the node to be deleted, and then delete the inorder successor (or predecessor).
+
+
+
 
 
 #### Binary Search Trees:
