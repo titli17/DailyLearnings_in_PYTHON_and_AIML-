@@ -1081,3 +1081,343 @@ B+ tree eliminates the drawback B-tree used for indexing by storing data pointer
 
 ![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/76a3fded-0e8c-4fd2-97f6-17807608e502)
 
+
+### DAY 15:
+
+#### General Tree:
+
+#### Creating the Root Node and adding children:
+
+	class TreeNode:
+	    def __init__(self, data):
+	        self.data = data
+	        self.children = []
+	
+	    def add_child(self, child_node):
+	        self.children.append(child_node)
+	
+	root = TreeNode("Root")
+	child1 = TreeNode("Child 1")
+	child2 = TreeNode("Child 2")
+	
+	root.add_child(child1)
+	root.add_child(child2)
+
+ The python __init__ method is declared within a class and is used to initialize the attributes of an object as soon as the object is formed. While giving the definition for an __init__(self) method, a default parameter, named ‘self’ is always passed in its argument. This self represents the object of the class itself.
+ 
+
+ #### Traversal Techniques:
+
+ ##### 1.Breadth First Search (BFS):
+
+	 class TreeNode:
+	    def __init__(self, data):
+	        self.data = data
+	        self.children = []
+	
+	    def add_child(self, child_node):
+	        self.children.append(child_node)
+	
+	def bfs(root):
+	    if root is None:
+	        return []
+	
+	    result = []
+	    queue = [root]
+	
+	    while queue:
+	        current_node = queue.pop(0)
+	        result.append(current_node.data)
+	        for child in current_node.children:
+	            queue.append(child)
+	
+	    return result
+	
+	# Example usage:
+	A=TreeNode("A")
+	B=TreeNode("B")
+	C=TreeNode("C")
+	D=TreeNode("D")
+	E=TreeNode("E")
+	
+	A.add_child(B)
+	A.add_child(C)
+	B.add_child(D)
+	C.add_child(E)
+	
+	print(bfs(A))
+
+ ##### 2. Depth First Search (DFS):
+
+	 class TreeNode:
+	    def __init__(self, data):
+	        self.data = data
+	        self.children = []
+	
+	    def add_child(self, child_node):
+	        self.children.append(child_node)
+	
+	def dfs(root):
+	    if root is None:
+	        return []
+	
+	    result = []
+	
+	    def dfs_helper(node):
+	        if node is None:
+	            return
+	        result.append(node.data)
+	        for child in node.children:
+	            dfs_helper(child)
+	
+	    dfs_helper(root)
+	    return result
+	
+	# Example usage:
+	A=TreeNode("A")
+	B=TreeNode("B")
+	C=TreeNode("C")
+	D=TreeNode("D")
+	E=TreeNode("E")
+	
+	A.add_child(B)
+	A.add_child(C)
+	B.add_child(D)
+	C.add_child(E)
+	
+	print (dfs(A))
+
+#### Binary Trees:
+
+##### Creating the Root Node and inserting Nodes:
+
+	class TreeNode:
+	    def __init__(self, data):
+	        self.data = data
+	        self.left = None
+	        self.right = None  
+	
+	# Example usage:
+	A=TreeNode("22")
+	B=TreeNode("12")
+	C=TreeNode("30")
+	D=TreeNode("8")
+	E=TreeNode("20")
+	F=TreeNode("25")
+	G=TreeNode("40")
+	
+	
+	A.left=B
+	A.right=C
+	B.left=D
+	B.right=E
+	C.left=F
+	C.right=G
+
+##### Deleting the Nodes :
+
+To delete a node from a binary tree (BST) in Python, you need to consider different cases:
+
+1.If the node to be deleted is a leaf node (no children), simply remove it from its parent.
+
+2.If the node to be deleted has only one child, replace the node with its child.
+
+3.If the node to be deleted has two children, find the inorder successor (or predecessor), copy its data to the node to be deleted, and then delete the inorder successor (or predecessor).
+
+
+
+
+
+##### Traversals:
+
+##### 1. In-order traversal:
+
+	class TreeNode:
+	    def __init__(self, data):
+	        self.data = data
+	        self.left = None
+	        self.right = None
+	
+	def inorder_traversal(root):
+	    result = []
+	    if root:
+	        result = inorder_traversal(root.left)
+	        result.append(root.data)
+	        result += inorder_traversal(root.right)
+	    return result
+	    
+	
+	# Example usage:
+	A=TreeNode("22")
+	B=TreeNode("12")
+	C=TreeNode("30")
+	D=TreeNode("8")
+	E=TreeNode("20")
+	F=TreeNode("25")
+	G=TreeNode("40")
+	
+	
+	A.left=B
+	A.right=C
+	B.left=D
+	B.right=E
+	C.left=F
+	C.right=G
+	
+	print(inorder_traversal(A))
+
+
+Output:
+
+['8', '12', '20', '22', '25', '30', '40']
+
+
+##### 2. Pre-order traversal:
+
+	class TreeNode:
+	    def __init__(self, data):
+	        self.data = data
+	        self.left = None
+	        self.right = None
+	
+	def preorder_traversal(root):
+	    result = []
+	    if root:
+	        result.append(root.data)
+	        result += preorder_traversal(root.left)
+	        result += preorder_traversal(root.right)
+	    return result
+	    
+	
+	# Example usage:
+	A=TreeNode("22")
+	B=TreeNode("12")
+	C=TreeNode("30")
+	D=TreeNode("8")
+	E=TreeNode("20")
+	F=TreeNode("25")
+	G=TreeNode("40")
+	
+	
+	A.left=B
+	A.right=C
+	B.left=D
+	B.right=E
+	C.left=F
+	C.right=G
+	
+	print(preorder_traversal(A))
+
+ Output:
+
+['22', '12', '8', '20', '30', '25', '40']
+
+
+##### 3. Post-order traversal:
+
+	class TreeNode:
+	    def __init__(self, data):
+	        self.data = data
+	        self.left = None
+	        self.right = None
+	
+	def postorder_traversal(root):
+	    result = []
+	    if root:
+	        result += postorder_traversal(root.left)
+	        result += postorder_traversal(root.right)
+	        result.append(root.data)
+	    return result
+	    
+	
+	# Example usage:
+	A=TreeNode("22")
+	B=TreeNode("12")
+	C=TreeNode("30")
+	D=TreeNode("8")
+	E=TreeNode("20")
+	F=TreeNode("25")
+	G=TreeNode("40")
+	
+	
+	A.left=B
+	A.right=C
+	B.left=D
+	B.right=E
+	C.left=F
+	C.right=G
+	
+	print(postorder_traversal(A))
+	
+Output:
+
+['8', '20', '12', '25', '40', '30', '22']
+
+
+#### Binary Search Trees:
+
+##### Creating the Root Node and inserting Nodes:
+
+	class TreeNode:
+	    def __init__(self, data):
+	        self.data = data
+	        self.left = None
+	        self.right = None
+	
+	
+	def insert(root,x):
+	    if root is None:
+	        return (TreeNode(x))
+	    else:
+	        if(root.data<x):
+	            root.right=insert(root.right,x)
+	        else:
+	            root.left=insert(root.left,x)
+	    return root
+	
+	def postorder_traversal(root):
+	    result = []
+	    if root:
+	        result += postorder_traversal(root.left)
+	        result += postorder_traversal(root.right)
+	        result.append(root.data)
+	    return result
+	    
+	
+	# Example usage:
+	A=TreeNode(100)
+	
+	A=insert(A,20)
+	A=insert(A,200)
+	A=insert(A,10)
+	A=insert(A,30)
+	A=insert(A,150)
+	A=insert(A,300)
+	
+	print(postorder_traversal(A))
+
+ Output:
+
+[10, 30, 20, 150, 300, 200, 100]
+
+
+##### Deleting Nodes:
+
+To delete a node from a binary search tree (BST) in Python, you need to consider different cases:
+
+1.If the node to be deleted is a leaf node (no children), simply remove it from its parent.
+
+2.If the node to be deleted has only one child, replace the node with its child.
+
+3.If the node to be deleted has two children, find the inorder successor (or predecessor), copy its data to the node to be deleted, and then delete the inorder successor (or predecessor).
+
+
+ 
+
+
+
+       
+
+
+
+	
