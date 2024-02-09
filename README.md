@@ -1,7 +1,5 @@
 # DailyLearnings_in_PYTHON_and_AIML-
 
-## PYTHON NOTES
-
 ### DAY 1:
 
 #### Introduction to Python:
@@ -1442,8 +1440,274 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 3.If the node to be deleted has two children, find the inorder successor (or predecessor), copy its data to the node to be deleted, and then delete the inorder successor (or predecessor).
 
 
+
+ ### DAY 16:
+
+ #### Top 50 DSA questions on Arrays:
+
+
+1.Find a peak element which is not smaller than its neighbours.
+	
+	'''Given an array arr of n elements that is first strictly increasing and then
+	maybe strictly decreasing, find the maximum element in the array.
+	
+	Note: If the array is increasing then just print the last element will be the
+	maximum value.
+	
+	Example:
+	
+	Input: array[]= {5, 10, 20, 15}
+	Output: 20
+	Explanation: The element 20 has neighbors 10 and 15, both of them are less
+	than 20.'''
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	for i in range(0,n-1):
+	    for j in range(i+1,n):
+	        if(arr[i]>arr[j]):
+	            a=arr[i]
+	            arr[i]=arr[j]
+	            arr[j]=a
+	
+	print("Peak element :",arr[n-1])
+
+
+2.Find the minimum (or maximum) element of an array.
+
+	'''Given an array, write functions to find the minimum and maximum elements in it. 
+	
+	The most simplest way to find min and max value of an element is to use
+	inbuilt function sort(). So, that value at 0th position will min and
+	value at nth position will be max.
+	
+	Example: [12, 1234, 45, 67, 1]
+	
+	Minimum element of array: 1
+	Maximum element of array: 1234'''
+	
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	
+	max=min=arr[0]
+	for i in range(n):
+	    if(arr[i]>max):
+	        max=arr[i]
+	    if(arr[i]<min):
+	        min=arr[i]
+	
+	print("Max element :",max,"\nMin element :",min)
+
+
+3.K’th Smallest/Largest Element in Unsorted Array.
+
+	'''Given an array arr[] of size N and a number K, where K is smaller than the
+	size of the array. Find the K’th smallest element in the given array. Given
+	that all array elements are distinct.
+	
+	Examples:  
+	
+	Input: arr[] = {7, 10, 4, 3, 20, 15}, K = 3 
+	Output: 7
+	
+	Input: arr[] = {7, 10, 4, 3, 20, 15}, K = 4 
+	Output: 10 '''
+	
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	k=int(input("Enter the value of K :"))
+	
+	for i in range(0,n-1):
+	    for j in range(i+1,n):
+	        if(arr[i]>arr[j]):
+	            a=arr[i]
+	            arr[i]=arr[j]
+	            arr[j]=a
+	
+	print("Kth smallest element :",arr[k-1])
+	print("Kth largest element :",arr[n-k])
+	
+
+4.Array Reverse.
+
+	'''Example:
+	
+	Input: original_array[] = {1, 2, 3}
+	Output: array_reversed[] = {3, 2, 1}'''
+	
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	
+	print("Array :",arr)
+	
+	arr2=[]
+	for i in range(n):
+	    arr2.append(arr[-i-1])
+	
+	print("Reversed array :",arr2)
+
+
+5.Sorting an array.
+
+	 def merge_sort(arr):
+	    if (len(arr)>1):
+	        mid=len(arr)//2      
+	        l=arr[:mid]
+	        r=arr[mid:]
+	        merge_sort(l)
+	        merge_sort(r)
+	 
+	        i=0
+	        j=0
+	        k=0
+	        
+	        while ((i<len(l))and(j<len(r))):
+	            if (l[i]<=r[j]):
+	                arr[k]=l[i]
+	                i+=1
+	            else:
+	                arr[k]=r[j]
+	                j+=1
+	            k+=1
+	 
+	        while (i<len(l)):
+	            arr[k]=l[i]
+	            i+=1
+	            k+=1
+	 
+	        while (j<len(r)):
+	            arr[k]=r[j]
+	            j+=1
+	            k+=1
+	 
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	merge_sort(arr)
+	print("Sorted Array :",arr) 
+
+
+6.Count number of occurrences (or frequency) in a sorted array.
+
+	'''Given a sorted array arr[] and a number x, write a function that counts the
+	occurrences of x in arr[].
+	
+	Example:
+	  Input: arr[] = {1, 1, 2, 2, 2, 2, 3,},   x = 2
+	  Output: 4
+	  
+	  Input: arr[] = {1, 1, 2, 2, 2, 2, 3,},   x = 3
+	  Output: 1
+	  
+	  Input: arr[] = {1, 1, 2, 2, 2, 2, 3,},   x = 1
+	  Output: 2
+	  
+	  Input: arr[] = {1, 1, 2, 2, 2, 2, 3,},   x = 4
+	  Output: -1 // 4 doesn't occur in arr[] '''
+	
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements in sorted manner :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	
+	print("Array :",arr)
+	
+	x=int(input("Enter the value of x :"))
+	
+	count=0
+	for i in range(n):
+	    if(arr[i]==x):
+	        count+=1
+	    if(arr[i]>x):
+	        break
+	
+	print("Number of occurences :",count)
+	    
+
+7.Sort an array of 0s, 1s and 2s | Dutch National Flag problem.
+
+	'''Given an array A[] consisting of only 0s, 1s, and 2s. The task is to write a
+	function that sorts the given array. The functions should put all 0s first,
+	then all 1s and all 2s in last.
+	
+	This problem is also the same as the famous “Dutch National Flag problem”.
+	
+	Input: {0, 1, 2, 0, 1, 2}
+	Output: {0, 0, 1, 1, 2, 2}
+	
+	Input: {0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1}
+	Output: {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2}'''
+	
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	c0=c1=c2=0
+	
+	for i in range(n):
+	    if(arr[i]==0):
+	        c0+=1
+	    elif(arr[i]==1):
+	        c1+=1
+	    else:
+	        c2+=1
+	
+	arr1=[]
+	for i in range(c0):
+	    arr1.append(0)
+	for i in range(c1):
+	    arr1.append(1)
+	for i in range(c2):
+	    arr1.append(2)
+	
+	print("Sorted Array :",arr1)
+
+
+
+	
+
+
  
 
+
+ 
 
 
        
