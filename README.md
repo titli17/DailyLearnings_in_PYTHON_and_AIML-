@@ -1700,18 +1700,556 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	print("Sorted Array :",arr1)
 
 
+ ### DAY 17:
 
+ #### Top 50 DSA questions on Arrays continued:
+
+ 8.Find Subarray with given sum.
+
+	'''Given an array arr[] of non-negative integers and an integer sum, find a
+	subarray that adds to a given sum.
+	
+	Note: There may be more than one subarray with sum as the given sum, print
+	first such subarray. 
+	
+	Examples: 
+	
+	Input: arr[] = {1, 4, 20, 3, 10, 5}, sum = 33
+	Output: Sum found between indexes 2 and 4
+	Explanation: Sum of elements between indices 2 and 4 is 20 + 3 + 10 = 33'''
+	
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	s=int(input("Enter the sum :"))
+	
+	p=0
+	for i in range(0,n):
+	    su=s-arr[i]
+	    p=i
+	    if(su!=0):
+	        for j in range(i+1,n):
+	            if(arr[j]<su):
+	                su-=arr[j]
+	            elif(arr[j]==su):
+	                p=j
+	                su-=su
+	                break
+	            else:
+	                break
+	    if(su==0):
+	        break
+	if(i==n-1 and p==n-1 and arr[i]!=s):
+	    print("There is no subarray with sum",s)
+	else:
+	    print("Subarray with given sum :",arr[i:p+1])
+
+
+ 9.Move all negative numbers to beginning and positive to end with constant extra space.
+
+	'''An array contains both positive and negative numbers in random order.
+	Rearrange the array elements so that all negative numbers appear before all
+	positive numbers.
+	
+	Examples : 
+	
+	Input: -12, 11, -13, -5, 6, -7, 5, -3, -6
+	Output: -12 -13 -5 -7 -3 -6 11 6 5
+	
+	'''
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	arr1=[]
+	for i in range(n):
+	    if(arr[i]<0):
+	        arr1.append(arr[i])
+	
+	for i in range(n):
+	    if(arr[i]>=0):
+	        arr1.append(arr[i])
+	
+	print("New array :",arr1)
+
+ 10.Union and Intersection of two sorted arrays.
+
+	 '''Given two sorted arrays, find their union and intersection.
+	
+	Example:
+	
+	Input: arr1[] = {1, 3, 4, 5, 7}
+	        arr2[] = {2, 3, 5, 6} 
+	Output: Union : {1, 2, 3, 4, 5, 6, 7} 
+	         Intersection : {3, 5}
+	
+	Input: arr1[] = {2, 5, 6}
+	        arr2[] = {4, 6, 8, 10} 
+	Output: Union : {2, 4, 5, 6, 8, 10} 
+	         Intersection : {6}
+	
+	'''
+	
+	def sort(arr,n):
+	    for i in range(0,n-1):
+	        for j in range(i+1,n):
+	            if(arr[i]>arr[j]):
+	                a=arr[i]
+	                arr[i]=arr[j]
+	                arr[j]=a
+	    return arr3
+	            
+	def rem_dupli(arr,n):
+	    arr1=[]
+	    for i in range(0,n-1):
+	        for j in range(i+1,n):
+	            if(arr[i]==arr[j]):
+	                arr1.append(arr[j])
+	                arr.pop(j)
+	                n-=1
+	            else:
+	                break
+	    return (arr,arr1)
+	
+	n1=int(input("Enter the number of elements for 1st array :"))
+	arr1=[]
+	print("Enter the elements :")
+	for i in range(0,n1):
+	    a=int(input())
+	    arr1.append(a)
+	
+	n2=int(input("Enter the number of elements for 2nd array :"))
+	arr2=[]
+	print("Enter the elements :")
+	for i in range(0,n2):
+	    a=int(input())
+	    arr2.append(a)
+	
+	print("Array 1 :",arr1)
+	print("Array 2 :",arr2)
+	
+	
+	arr3=[]
+	for i in range(0,n1):
+	    arr3.append(arr1[i])
+	for i in range(0,n2):
+	    arr3.append(arr2[i])
+	
+	arr4=[]
+	
+	arr3=sort(arr3,n1+n2)
+	arr3,arr4=rem_dupli(arr3,n1+n2)
+	
+	print("Union :",arr3)
+	
+	print("Intersection :",arr4)
+	
+	
+11.Program to cyclically rotate an array by one.
+
+	'''Given an array, the task is to cyclically rotate the array clockwise by one
+	time. 
+	
+	Examples:  
+	
+	Input: arr[] = {1, 2, 3, 4, 5}
+	Output: arr[] = {5, 1, 2, 3, 4}
+	
+	Input: arr[] = {2, 3, 4, 5, 1}
+	Output: {1, 2, 3, 4, 5}
+	
+	'''
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	
+	arr1=[]
+	arr1.append(arr[n-1])
+	for i in range(0,n-1):
+	    arr1.append(arr[i])
+	print("New Array :",arr1)
+
+
+12.Find the Missing Number.
+
+	'''Given an array arr[] of size N-1 with integers in the range of [1, N], the
+	task is to find the missing number from the first N integers.
+	
+	Note: There are no duplicates in the list.
+	
+	Examples: 
+	
+	Input: arr[] = {1, 2, 4, 6, 3, 7, 8}
+	Output: 5
+	Explanation: Here the size of the array is 7, so the range will be [1, 8].
+	The missing number between 1 to 8 is 5.
+	'''
+	
+	def sort(arr,n):
+	    for i in range(0,n-1):
+	        for j in range(i+1,n):
+	            if(arr[i]>arr[j]):
+	                a=arr[i]
+	                arr[i]=arr[j]
+	                arr[j]=a
+	    return arr
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	arr=sort(arr,n)
+	
+	flag=0
+	for i in range(0,n):
+	    if(arr[i]==i+1):
+	        flag=1
+	        continue
+	    else:
+	        flag=0
+	        break
+	if(flag==0):
+	    print("Missing number :",i+1)
+	else:
+	    print("Missing number :",i+2)
+	
+	
+		
+13.Count pairs with given sum.
+
+	'''Given an array of N integers, and an integer K, the task is to find the
+	number of pairs of integers in the array whose sum is equal to K.
+	
+	Examples:  
+	
+	Input: arr[] = {1, 5, 7, -1}, K = 6
+	Output:  2
+	Explanation: Pairs with sum 6 are (1, 5) and (7, -1).
+	
+	Input: arr[] = {1, 5, 7, -1, 5}, K = 6
+	Output:  3
+	Explanation: Pairs with sum 6 are (1, 5), (7, -1) & (1, 5).     
+	
+	'''
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	
+	print("Array :",arr)
+	
+	k=int(input("Enter the value of K :"))
+	
+	count=0
+	arr3=[]
+	for i in range(0,n-1):
+	    for j in range(i+1,n):
+	        if(arr[i]+arr[j]==k):
+	            arr2=[]
+	            arr2.append(arr[i])
+	            arr2.append(arr[j])
+	            arr3.append(arr2)
+	            count+=1
+	        
+	
+	print("Number of Pairs :",count)
+	for i in range(len(arr3)):
+	    print(arr3[i])        
+	
+	
+14.Sort an array using QuickSort.
+
+	def swap(arr,i,j): 
+	    t=arr[i]
+	    arr[i]=arr[j]
+	    arr[j]=t
+	
+	def partition(arr,low,high): 
+	    pivot=arr[high]
+	    i=low-1
+	    for j in range(low,high): 
+	        if(arr[j]<=pivot):
+	            i+=1
+	            swap(arr,i,j)
+	    swap(arr,i+1,high)
+	    return (i+1)
+	
+	def Quicksort(arr,low,high):
+	    if (low<high):
+	        p=partition(arr,low,high)
+	        Quicksort(arr,low,p-1)
+	        Quicksort(arr,p+1,high)
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	
+	print("Array :",arr)
+	
+	Quicksort(arr,0,n-1)
+	print("After sorting :",arr)
 	
 
+15.Find common elements in three sorted arrays.
 
- 
+	'''Given three Sorted arrays in non-decreasing order, print all common
+	elements in these arrays.
+	
+	Examples: 
+	
+	Input: 
+	ar1[] = {1, 5, 10, 20, 40, 80} 
+	ar2[] = {6, 7, 20, 80, 100} 
+	ar3[] = {3, 4, 15, 20, 30, 70, 80, 120} 
+	Output: 20, 80
+	
+	Input: 
+	ar1[] = {1, 5, 5} 
+	ar2[] = {3, 4, 5, 5, 10} 
+	ar3[] = {5, 5, 10, 20} 
+	Output: 5, 5
+	'''
+	
+	def sort(arr,n):
+	    for i in range(0,n-1):
+	        for j in range(i+1,n):
+	            if(arr[i]>arr[j]):
+	                a=arr[i]
+	                arr[i]=arr[j]
+	                arr[j]=a
+	    return arr
+	
+	def rem_dupli(arr,n):
+	    arr5=[]
+	    for i in range(0,n-2):
+	        for j in range(i+1,n-1):
+	            if(arr[i]==arr[j] and arr[i]==arr[j+1]):
+	                arr5.append(arr[i])
+	                arr.pop(j)
+	                arr.pop(j+1)
+	                n-=2
+	            else:
+	                break
+	    return (sort(arr5,len(arr5)))
+	                
+	
+	n1=int(input("Enter the number of elements :"))
+	arr1=[]
+	print("Enter the elements :")
+	for i in range(0,n1):
+	    a=int(input())
+	    arr1.append(a)
+	
+	n2=int(input("Enter the number of elements :"))
+	arr2=[]
+	print("Enter the elements :")
+	for i in range(0,n2):
+	    a=int(input())
+	    arr2.append(a)
+	
+	n3=int(input("Enter the number of elements :"))
+	arr3=[]
+	print("Enter the elements :")
+	for i in range(0,n3):
+	    a=int(input())
+	    arr3.append(a)
+	
+	print("Array 1 :",arr1)
+	print("Array 2 :",arr2)
+	print("Array 3 :",arr3)
+	
+	arr4=[]
+	for i in range(0,n1):
+	    arr4.append(arr1[i])
+	for i in range(0,n2):
+	    arr4.append(arr2[i])
+	for i in range(0,n3):
+	    arr4.append(arr3[i])
+	
+	arr4=sort(arr4,n1+n2+n3)
+	
+	arr6=rem_dupli(arr4,n1+n2+n3)
+	print("Common elements :",arr6)
+	
+### DAY 17:
 
+ #### Top 50 DSA questions on Arrays continued:
 
- 
+ 16.Find the first repeating element in an array of integers.
 
+	'''Given an array of integers arr[], The task is to find the index of first
+	repeating element in it i.e. the element that occurs more than once and whose
+	index of the first occurrence is the smallest. 
+	
+	Examples: 
+	
+	Input: arr[] = {10, 5, 3, 4, 3, 5, 6}
+	Output: 5 
+	Explanation: 5 is the first element that repeats
+	
+	Input: arr[] = {6, 10, 5, 4, 9, 120, 4, 6, 10}
+	Output: 6 
+	Explanation: 6 is the first element that repeats
+	'''
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	flag=1
+	for i in range(0,n-1):
+	    for j in range(i+1,n):
+	        if(arr[i]==arr[j]):
+	            print("First element that repeats itself :",arr[i])
+	            flag=0
+	            break
+	        if(flag==0):
+	            break 
+	
 
-       
+17.Rearrange array in alternating positive & negative items with O(1) extra space| Set 1
 
+	'''Given an array having positive and negative numbers, our task is to arrange
+	them in an alternate fashion such that every positive number is followed by a
+	negative number and vice-versa maintaining the order of appearance. The number
+	of positive and negative numbers need not to be equal. If there are more
+	positive numbers then they have to appear at the end of the array , same
+	condition for negative numbers also .
+	
+	Examples: 
+	
+	Input:  arr[] = {1, 2, 3, -4, -1, 4}
+	Output: arr[] = {-4, 1, -1, 2, 3, 4}
+	
+	Input:  arr[] = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8}
+	Output: arr[] = {-5, 5, -2, 2, -8, 4, 7, 1, 8, 0}
+	'''
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	arr1=[]
+	arr2=[]
+	for i in range(0,n):
+	    if(arr[i]<0):
+	        arr1.append(arr[i])
+	    else:
+	        arr2.append(arr[i])
+	
+	n1=len(arr1)
+	n2=len(arr2)
+	
+	print(n1,n2)
+	
+	arr3=[]
+	if(n1<n2):
+	    j=0
+	    k=0
+	    for i in range(0,2*n1):
+	        if(i%2==0):
+	            arr3.append(arr1[j])
+	            j+=1
+	        else:
+	            arr3.append(arr2[k])
+	            k+=1
+	    for i in range(n1,n2):
+	        arr3.append(arr2[i])
+	elif(n1==n2):
+	    j=0
+	    k=0
+	    for i in range(0,2*n1):
+	        if(i%2==0):
+	            arr3.append(arr1[j])
+	            j+=1
+	        else:
+	            arr3.append(arr2[k])
+	            k+=1
+	if(n1>n2):
+	    j=0
+	    k=0
+	    for i in range(0,2*n2):
+	        if(i%2==0):
+	            arr3.append(arr1[j])
+	            j+=1
+	        else:
+	            arr3.append(arr2[k])
+	            k+=1
+	    for i in range(n2,n1):
+	        arr3.append(arr1[i])
+	
+	print("New Array :",arr3)
+
+ 18.Largest Sum Contiguous Subarray (Kadane’s Algorithm).
+
+	'''Given an array arr[] of size N. The task is to find the sum of the
+	contiguous subarray within a arr[] with the largest sum. 
+	'''
+	
+	
+	def maxSubarraySum(arr,n):
+	    max_so_far=max_ending_here=0
+	    for i in range(1,n):
+	        max_ending_here=max(arr[i],max_ending_here+arr[i])
+	        max_so_far=max(max_so_far,max_ending_here)
+	    return(max_so_far)
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	maxsum=maxSubarraySum(arr,n)
+	print("Maximum subarray sum in the array is",maxsum,".")
+	
+19.Find the Factorial of a large number.
+
+	def fact(n):
+	    val=1
+	    for i in range(1,n+1):
+	        val*=i
+	    return val
+	
+	n=int(input("Enter the number :"))
+	val=fact(n)
+	print("Factorial of",n,"is :",val)
+	 
 
 
 	
