@@ -2250,6 +2250,168 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	val=fact(n)
 	print("Factorial of",n,"is :",val)
 	 
+20.Subarray with 0 sum.
+
+	'''Given an array of positive and negative numbers, the task is to find if
+	there is a subarray (of size at least one) with 0 sum.
+	
+	Examples: 
+	
+	Input: {4, 2, -3, 1, 6}
+	Output: true 
+	Explanation:
+	There is a subarray with zero sum from index 1 to 3.
+	
+	Input: {4, 2, 0, 1, 6}
+	Output: true
+	Explanation: The third element is zero. A single element is also a sub-array.
+	'''
+	
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	s=0
+	p=0
+	for i in range(0,n):
+	    su=s+arr[i]
+	    p=i
+	    if(su!=0):
+	        for j in range(i+1,n):
+	            su+=arr[j]
+	            if(su==0):
+	                p=j
+	                break
+	    if(su==0):
+	        break
+	if(i==n-1 and p==n-1 and arr[i]!=0):
+	    print("There is no subarray with sum 0.")
+	else:
+	    print("Subarray with given sum :",arr[i:p+1])
+
+21.Maximum Product Subarray.
+
+	'''Given an array that contains both positive and negative integers, the task
+	is to find the product of the maximum product subarray. 
+	
+	Examples:
+	
+	Input: arr[] = {6, -3, -10, 0, 2}
+	Output:  180
+	Explanation: The subarray is {6, -3, -10}
+	
+	Input: arr[] = {-1, -3, -10, 0, 60}
+	Output:   60
+	Explanation: The subarray is {60}
+	'''
+	
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	prod=arr[0]
+	for i in range(0,n):
+	    r=arr[i]
+	    for j in range(i+1,n):
+	        prod=max(prod,r)
+	        r*=arr[j]
+	    prod=max(prod,r)
+	
+	print("Maximum Product :",prod)
+
+22.Find the Minimum element in a Sorted and Rotated Array.
+
+	'''Given a sorted array arr[] (may be distinct or may contain duplicates) of
+	size N that is rotated at some unknown point, the task is to find the minimum
+	element in it. 
+	
+	Examples: 
+	
+	Input: arr[] = {5, 6, 1, 2, 3, 4}
+	Output: 1
+	Explanation: 1 is the minimum element present in the array.
+	
+	Input: arr[] = {1, 2, 3, 4}
+	Output: 1
+	
+	'''
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	mini=arr[0]
+	for i in range(1,n):
+	    mini=min(arr[i],mini)
+	print("Minimum element :",mini)
+
+    
+23.Maximum sum of i*arr[i] among all rotations of a given array.
+
+	'''Given an array arr[] of n integers, find the maximum that maximizes the sum of the value of i*arr[i] where i varies from 0 to n-1.
+	
+	Examples:  
+	
+	Input: arr[] = {8, 3, 1, 2}
+	Output: 29
+	Explanation: Lets look at all the rotations,
+	{8, 3, 1, 2} = 8*0 + 3*1 + 1*2 + 2*3 = 11
+	{3, 1, 2, 8} = 3*0 + 1*1 + 2*2 + 8*3 = 29
+	{1, 2, 8, 3} = 1*0 + 2*1 + 8*2 + 3*3 = 27
+	{2, 8, 3, 1} = 2*0 + 8*1 + 3*2 + 1*3 = 17
+	
+	Input: arr[] = {3, 2, 1}
+	Output: 7
+	Explanation: Lets look at all the rotations,
+	{3, 2, 1} = 3*0 + 2*1 + 1*2 = 4
+	{2, 1, 3} = 2*0 + 1*1 + 3*2 = 7
+	{1, 3, 2} = 1*0 + 3*1 + 2*2 = 7
+	'''
+	
+	def summation(arr,n):
+	    res=0
+	    for i in range(0,n):
+	        res+=(arr[i]*i)
+	    return res
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	res1=summation(arr,n)
+	for i in range(1,n):
+	    arr1=[]
+	    for j in range(i,n):
+	        arr1.append(arr[j])
+	    for j in range(0,i):
+	        arr1.append(arr[j])
+	    res=summation(arr1,n)
+	    res1=max(res1,res)
+	
+	print("Maximum sum :",res1)
+	
+
+
+
+
 
 
 	
