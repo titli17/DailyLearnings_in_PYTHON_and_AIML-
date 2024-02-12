@@ -2408,6 +2408,109 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	
 	print("Maximum sum :",res1)
 	
+24.Minimum number of jumps to reach end (Jump Game).
+	
+	'''Given an array arr[] where each element represents the max number of steps
+	that can be made forward from that index. The task is to find the minimum
+	number of jumps to reach the end of the array starting from index 0.
+	
+	Examples: 
+	
+	Input: arr[] = {1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9}
+	Output: 3 (1-> 3 -> 9 -> 9)
+	Explanation: Jump from 1st element to 2nd element as there is only 1 step.
+	Now there are three options 5, 8 or 9. If 8 or 9 is chosen then the end node
+	9 can be reached. So 3 jumps are made.
+	
+	Input:  arr[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+	Output: 10
+	Explanation: In every step a jump is needed so the count of jumps is 10.
+	'''
+	
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the steps :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	i=0
+	a=0
+	count=0
+	while(i<n):
+	    a+=arr[i]
+	    count+=1
+	    if(a>=n):
+	        break
+	    i=arr[a]
+	    
+	print("Number of jumps :",count)
+
+25.The Stock Span Problem.
+
+	'''The stock span problem is a financial problem where we have a series of N
+	daily price quotes for a stock and we need to calculate the span of the stock’s
+	price for all N days. The span Si of the stock’s price on a given day i is
+	defined as the maximum number of consecutive days just before the given day,
+	for which the price of the stock on the current day is less than or equal to
+	its price on the given day. 
+	
+	Examples:
+	
+	Input: N = 7, price[] = [100 80 60 70 60 75 85]
+	Output: 1 1 1 2 1 4 6
+	Explanation: Traversing the given input span for 100 will be 1, 80 is smaller
+	than 100 so the span is 1, 60 is smaller than 80 so the span is 1, 70 is
+	greater than 60 so the span is 2 and so on. Hence the output will be
+	1 1 1 2 1 4 6.
+	
+	Input: N = 6, price[] = [10 4 5 90 120 80]
+	Output:1 1 2 4 5 1
+	Explanation: Traversing the given input span for 10 will be 1, 4 is smaller
+	than 10 so the span will be 1, 5 is greater than 4 so the span will be 2 and
+	so on. Hence, the output will be 1 1 2 4 5 1.
+	
+	
+	'''
+	
+	n=int(input("Enter the number of days :"))
+	arr=[]
+	print("Enter the stock prices :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Stock Prices :",arr)
+	
+	arr1=[]
+	for i in range(0,n):
+	    if(i==0):
+	        span=1
+	    else:
+	        if(arr[i]<arr[i-1]):
+	            span=1
+	        else:
+	            count=1
+	            for j in range(i-1,-1,-1):
+	                if(arr[j]<arr[i]):
+	                    count+=1
+	                else:
+	                    break
+	            span=count
+	    arr1.append(span)
+	
+	print("Span :",arr1)
+
+
+
+
+
+
+
+
+
+
 
 
 
