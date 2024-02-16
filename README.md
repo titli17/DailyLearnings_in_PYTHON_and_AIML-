@@ -2941,6 +2941,61 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	    print("It is a panagram.")
 
 
+6.Check if a string can be obtained by rotating another string 2 places.
+
+	'''Given two strings, the task is to find if a string can be obtained by
+	rotating another string by two places. 
+	
+	Examples: 
+	
+	Input: string1 = “amazon”, string2 = “azonam” 
+	Output: Yes 
+	Explanation: Rotating string1 by 2 places in anti-clockwise gives the string2.
+	
+	
+	Input: string1 = “amazon”, string2 = “onamaz” 
+	Output: Yes 
+	Explanation: Rotating string1 by 2 places in clockwise gives the string2.
+	'''
+	
+	def compare(arr1,arr2,n):
+	    flag=0
+	    for i in range(0,n):
+	        if(arr1[i]==arr2[i]):
+	            continue
+	        else:
+	            flag=1
+	            break
+	    if(flag==1):
+	        return False
+	    else:
+	        return True
+	        
+	    
+	str1=input("Enter string 1 :")
+	str2=input("Enter string 2 :")
+	
+	str3=[]
+	str3.append(str2[len(str2)-2])
+	str3.append(str2[len(str2)-1])
+	for i in range(0,len(str1)-2):
+	    str3.append(str2[i])
+	
+	
+	str5=[]
+	for i in range(2,len(str2)):
+	    str5.append(str2[i])
+	str5.append(str2[0])
+	str5.append(str2[1])
+	
+	
+	if(compare(str3,str1,len(str1)) or compare(str5,str1,len(str1))):
+	    print("Yes")
+	else:
+	    print("NO")
+
+
+
 
 
     
