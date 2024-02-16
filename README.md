@@ -2448,6 +2448,13 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	    
 	print("Number of jumps :",count)
 
+
+
+
+### DAY 18:
+
+ #### Top 50 DSA questions on Arrays continued:
+
 25.The Stock Span Problem.
 
 	'''The stock span problem is a financial problem where we have a series of N
@@ -2503,9 +2510,452 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	print("Span :",arr1)
 
 
+26.Find first non-repeating element in a given Array of integers.
+
+	'''Given an array of integers of size N, the task is to find the first
+	non-repeating element in this array. 
+	
+	Examples:
+	
+	Input: {-1, 2, -1, 3, 0}
+	Output: 2
+	Explanation: The first number that does not repeat is : 2
+	
+	Input: {9, 4, 9, 6, 7, 4}
+	Output: 6
+	'''
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	arr1=[]
+	arr2=[]
+	for i in arr:
+	    if i not in arr1:
+	        arr1.append(i)
+	    else:
+	        arr2.append(i)
+	
+	for i in range(0,len(arr1)):
+	    flag=1
+	    for j in range(0,len(arr2)):
+	        if(arr1[i]==arr2[j]):
+	            flag=0
+	            break
+	        else:
+	            flag=1
+	    if(flag==1):
+	        break
+	
+	print("First non-repeating element :",arr1[i])
+	
+	
+27.Find the row with maximum number of 1s.
+
+	'''Given a boolean 2D array, where each row is sorted. Find the row with the
+	maximum number of 1s. 
+	
+	Example:  
+	
+	Input matrix :          0 1 1 1
+	                        0 0 1 1
+	                        1 1 1 1  // this row has maximum 1s
+	                        0 0 0 0
+	Output: 2
+	'''
+	
+	
+	r=int(input("Enter the number of rows :"))
+	c=int(input("Enter the number of columns :"))
+	print("Enter the elements :")
+	arr=[]
+	for i in range(0,r):
+	    arr1=[]
+	    for j in range(0,c):
+	        a=int(input())
+	        arr1.append(a)
+	    arr.append(arr1)
+	
+	print("Matrix :")
+	for i in range(0,r):
+	    for j in range(0,c):
+	        print(arr[i][j],end=" ")
+	    print("\n")
+	
+	flag=0
+	a=[]
+	p=r
+	for i in range(0,c):
+	    for j in range(0,p):
+	        if(arr[j][i]==1):
+	            a.append(j)
+	            p=i
+	            flag=1
+	            
+	    if(flag==1):
+	        break
+	print("Row with maximum number of 1's : ",end="")
+	for i in range(0,len(a)):
+	    print(a[i],end=" ")
+
+
+28.Find whether an array is subset of another array.
+
+	'''Given two arrays: arr1[0..m-1] and arr2[0..n-1]. Find whether arr2[] is a
+	subset of arr1[] or not. Both arrays are not in sorted order. It may be
+	assumed that elements in both arrays are distinct.
+	
+	Examples: 
+	
+	Input: arr1[] = {11, 1, 13, 21, 3, 7}, arr2[] = {11, 3, 7, 1} 
+	Output: arr2[] is a subset of arr1[]
+	
+	Input: arr1[] = {1, 2, 3, 4, 5, 6}, arr2[] = {1, 2, 4} 
+	Output: arr2[] is a subset of arr1[]
+	
+	'''
+	
+	n1=int(input("Enter the number of elements of 1st array :"))
+	arr1=[]
+	print("Enter the elements :")
+	for i in range(0,n1):
+	    a=int(input())
+	    arr1.append(a)
+	print("Array 1 :",arr1)
+	
+	n2=int(input("Enter the number of elements of 2nd array :"))
+	arr2=[]
+	print("Enter the elements :")
+	for i in range(0,n2):
+	    a=int(input())
+	    arr2.append(a)
+	print("Array 2 :",arr2)
+	
+	flag=1
+	if(n1>n2):
+	    for i in range(0,n2):
+	        for j in range(0,n1):
+	            if(arr2[i]==arr1[j]):
+	                flag=0
+	                break
+	            else:
+	                flag=1
+	    if(flag==0):
+	        print("arr2[] is a subset of arr1[]")
+	    else:
+	        print("arr2[] is not a subset of arr1[]")
+
+
+29.Majority Element.
+
+	'''Find the majority element in the array. A majority element in an array A[]
+	of size n is an element that appears more than n/2 times (and hence there is
+	at most one such element). 
+	
+	Examples : 
+	
+	Input : A[]={3, 3, 4, 2, 4, 4, 2, 4, 4}
+	Output : 4
+	Explanation: The frequency of 4 is 5 which is greater than the half of the
+	size of the array size. 
+	
+	Input : A[] = {3, 3, 4, 2, 4, 4, 2, 4}
+	Output : No Majority Element
+	Explanation: There is no element whose frequency is greater than the half of
+	the size of the array size.
+	
+	'''
+	
+	def sort(arr,n):
+	    for i in range(0,n-1):
+	        for j in range(i+1,n):
+	            if(arr[i]>arr[j]):
+	                a=arr[i]
+	                arr[i]=arr[j]
+	                arr[j]=a
+	
+	    return arr
+	
+	def major(arr,n):
+	    a=n//2
+	    maxi=0
+	    i=0
+	    while(i<n):
+	        count=1
+	        if(i==n-1):
+	            break
+	        else:
+	            for j in range(i+1,n):
+	                if(arr[i]==arr[j]):
+	                    count+=1
+	                else:
+	                    i=j+1
+	                    break
+	            maxi=max(count,maxi)
+	            if(maxi>a):
+	                break
+	    return maxi,arr[i]
+	    
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	arr=sort(arr,n)
+	
+	maxi,b=major(arr,n)
+	print(maxi)
+	if(maxi>n//2):
+	    print("Majority element :",b)
+	else:
+	    print("There is no majority element.")
+
+
+30.Find the missing and repeating number.
+
+	'''Given an unsorted array of size n. Array elements are in the range of 1 to n.
+	One number from set {1, 2, …n} is missing and one number occurs twice in the
+	array. Find these two numbers.
+	
+	Examples: 
+	
+	Input: arr[] = {3, 1, 3}
+	Output: Missing = 2, Repeating = 3
+	Explanation: In the array, 2 is missing and 3 occurs twice 
+	
+	Input: arr[] = {4, 3, 6, 2, 1, 1}
+	Output: Missing = 5, Repeating = 1
+	'''
+	
+	def bubsort(arr,n):
+	    for i in range(0,n):
+	        for j in range(i+1,n):
+	            if(arr[i]>arr[j]):
+	                a=arr[i]
+	                arr[i]=arr[j]
+	                arr[j]=a
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	bubsort(arr,n)
+	
+	arr1=[]
+	for i in range(0,n-1):
+	    if(arr[i]==arr[i+1]):
+	        print("Repeating element :",arr[i])
+	        break
+	
+	for i in range (1,n+1):
+	    if i not in arr:
+	        print("Missing element :",i)
+	        break
+	
+
+### DAY 19:
+
+ #### Top 50 DSA questions on Strings:
+
+ 1.Reverse words in a given string.
+
+	'''Given a string, the task is to reverse the order of the words in the given
+	string. 
+	
+	Examples:
+	
+	Input: s = “geeks quiz practice code” 
+	Output: s = “code practice quiz geeks”
+	
+	Input: s = “i love programming very much” 
+	Output: s = “much very programming love i” 
+	
+	'''
+	
+	a=input("Enter the string :")
+	j=len(a)
+	print("Reversed words :",end=" ")
+	for i in range(len(a)-1,0,-1):
+	    if(a[i]==" "):
+	        print(a[i+1:j],end=" ")
+	        j=i
+	print(a[0:j])
+
+ 2.Longest Common Prefix using Sorting.
+
+	'''Problem Statement: Given a set of strings, find the longest common prefix.
+	Examples:
+	
+	Input: {“geeksforgeeks”, “geeks”, “geek”, “geezer”}
+	Output: “gee”
+	
+	Input: {“apple”, “ape”, “april”}
+	Output: “ap”
+	'''
+	
+	print("Enter the strings :",end=" ")
+	a=list(map(str,input().split()))
+	print(a)
+	arr=a[0]
+	b=len(arr)
+	p=0
+	for i in range(1,len(a)):
+	    mini=min(len(arr),len(a[i]))
+	    for j in range(0,mini):
+	        if(arr[j]==a[i][j]):
+	            p=j
+	            continue
+	        else:
+	            break
+	    b=min(b,p)
+	
+	print("Longest common prefix :",arr[0:b+1])
+
+ 3.Find the minimum distance between the given two words.
+
+	'''Given a list of words followed by two words, the task is to find the
+	minimum distance between the given two words in the list of words.
+	
+	Examples:
+	
+	Input: S = { “the”, “quick”, “brown”, “fox”, “quick”}, word1 = “the”,
+	word2 = “fox”
+	
+	Output: 3
+	Explanation: Minimum distance between the words “the” and “fox” is 3
+	
+	Input: S = {“geeks”, “for”, “geeks”, “contribute”,  “practice”},
+	word1 = “geeks”, word2 = “practice”
+	
+	Output: 2
+	Explanation: Minimum distance between the words “geeks” and “practice” is 2
+	'''
+	
+	print("Enter the string :",end=" ")
+	a=list(map(str,input().split()))
+	s1=input("Enter string1 :")
+	s2=input("Enter string2 :")
+	
+	p=q=mini=len(a)
+	for i in range(0,len(a)):
+	    if(a[i]==s1):
+	        p=i
+	    if(a[i]==s2):
+	        q=i
+	    s=p-q
+	    if(s<0):
+	        s*=-1
+	    mini=min(mini,s)
+	print("Minimum distance :",mini)
+
+ 4.Check divisibility by 7.
+
+	'''Given a number N, the task is to check if it is divisible by 7 or not.
+	Note: You are not allowed to use the modulo operator, floating point
+	arithmetic is also not allowed.
+	
+	'''
+	
+	def divisible_by_7(n):
+	    if(n>0):
+	        n-=7
+	        divisible_by_7(n)
+	    elif(n==0):
+	        print("It is divisible by 7.")
+	    else:
+	        print("It is not divisible by 7.")
+	
+	n=int(input("Enter a number :"))
+	n1=divisible_by_7(n)
+
+ 5.Check if given String is Pangram or not.
+
+	'''Given a string Str. The task is to check if it is Pangram or not. 
+	
+	A pangram is a sentence containing every letter in the English Alphabet.
+	
+	Examples: 
+	
+	Input: “The quick brown fox jumps over the lazy dog” 
+	Output: is a Pangram 
+	Explanation: Contains all the characters from ‘a’ to ‘z’] 
+	
+	Input: “The quick brown fox jumps over the dog”
+	Output: is not a Pangram 
+	Explanation: Doesn’t contain all the characters from ‘a’ to ‘z’, as ‘l’, ‘z’,
+	‘y’ are missing
+	
+	'''
+	
+	def bubsort(arr,n):
+	    for i in range(0,n-1):
+	        for j in range(i+1,n):
+	            if(arr[i]>arr[j]):
+	                a=arr[i]
+	                arr[i]=arr[j]
+	                arr[j]=a
+	
+	def del_dupli(arr,n):
+	    arr2=[]
+	    for i in arr:
+	        if i not in arr2:
+	            arr2.append(i)
+	    return arr2
+	
+	def panagram(arr,n):
+	    a=97
+	    flag=1
+	    for i in range(1,n):
+	        if(ord(arr[i])==a):
+	            a+=1
+	            flag=0
+	        else:
+	            flag=1
+	    if(flag==0):
+	        return 0
+	    else:
+	        return 1
+	    
+	arr=input("Enter a string :")
+	arr=arr.lower()
+	arr1=list(arr)
+	bubsort(arr1,len(arr1))
+	arr1=del_dupli(arr1,len(arr1))
+	a=panagram(arr1,len(arr1))
+	if(a==1):
+	    print("It is not a panagram.")
+	else:
+	    print("It is a panagram.")
 
 
 
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 
