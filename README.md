@@ -2994,13 +2994,94 @@ Revised learnings of Day 14 and 15 (TREES)
 
 To delete a node from a binary tree in Python, you need to consider different cases:
 
-1.If the node to be deleted is a leaf node (no children), simply remove it from its parent.
+1.Starting at the root, find the deepest and rightmost node in the binary tree and the node which we want to delete. 
 
-2.If the node to be deleted has only one child, replace the node with its child.
+2.Replace the deepest rightmost node’s data with the node to be deleted. 
 
-3.If the node to be deleted has two children, find the inorder successor (or predecessor), copy its data to the node to be deleted, and then delete the inorder successor (or predecessor).
+3.Then delete the deepest rightmost node.
 
-
+	class TreeNode:
+	    def __init__(self, key):
+	        self.key = key
+	        self.left = None
+	        self.right = None
+	
+	def inorder_traversal(root):
+	    result = []
+	    if root:
+	        result = inorder_traversal(root.left)
+	        result.append(root.key)
+	        result += inorder_traversal(root.right)
+	    return result
+	
+	def deleteDeepest(root, d_node): 
+	    q = [] 
+	    q.append(root) 
+	    while(len(q)): 
+	        temp = q.pop(0) 
+	        if temp is d_node: 
+	            temp = None
+	            return
+	        if temp.right: 
+	            if temp.right is d_node: 
+	                temp.right = None
+	                return
+	            else: 
+	                q.append(temp.right) 
+	        if temp.left: 
+	            if temp.left is d_node: 
+	                temp.left = None
+	                return
+	            else: 
+	                q.append(temp.left)
+	
+	def deletion(root, key): 
+	    if root == None: 
+	        return None
+	    if root.left == None and root.right == None: 
+	        if root.key == key: 
+	            return None
+	        else: 
+	            return root 
+	    key_node = None
+	    q = [] 
+	    q.append(root) 
+	    temp = None
+	    while(len(q)): 
+	        temp = q.pop(0) 
+	        if temp.key == key: 
+	            key_node = temp 
+	        if temp.left: 
+	            q.append(temp.left) 
+	        if temp.right: 
+	            q.append(temp.right) 
+	    if key_node: 
+	        x = temp.key 
+	        deleteDeepest(root, temp) 
+	        key_node.key = x 
+	    return root 
+	
+	# Example usage:
+	A=TreeNode(10)
+	B=TreeNode(11)
+	C=TreeNode(7)
+	D=TreeNode(12)
+	E=TreeNode(9)
+	F=TreeNode(15)
+	G=TreeNode(8)
+	
+	A.left=B
+	B.left=C
+	B.right=D
+	A.right=E
+	E.left=F
+	E.right=G
+	
+	print(inorder_traversal(A))
+	
+	root = deletion(A, 11)
+	
+	print(inorder_traversal(A))
 
     
 
@@ -3095,6 +3176,105 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	print(inorder_traversal(A))
 	
 	
+##### Solved HackerRank Challenges :
+
+1.Mr. Anant Asankhya is the manager at the INFINITE hotel. The hotel has an infinite amount of rooms.
+
+One fine day, a finite number of tourists come to stay at the hotel.
+
+The tourists consist of:
+
+→ A Captain.
+
+→ An unknown group of families consisting of K members per group where K ≠ 1.
+
+The Captain was given a separate room, and the rest were given one room per group.
+
+Mr. Anant has an unordered list of randomly arranged room entries. The list consists of the room numbers for all of the tourists. The room numbers will appear K times per group except for the Captain's room.
+
+Mr. Anant needs you to help him find the Captain's room number.
+The total number of tourists or the total number of groups of families is not known to you.
+You only know the value of K and the room number list.
+
+
+	def merge_sort(arr):
+	    if (len(arr)>1):
+	        mid=len(arr)//2      
+	        l=arr[:mid]
+	        r=arr[mid:]
+	        merge_sort(l)
+	        merge_sort(r)
+	 
+	        i=0
+	        j=0
+	        k=0
+	        
+	        while ((i<len(l))and(j<len(r))):
+	            if (l[i]<=r[j]):
+	                arr[k]=l[i]
+	                i+=1
+	            else:
+	                arr[k]=r[j]
+	                j+=1
+	            k+=1
+	 
+	        while (i<len(l)):
+	            arr[k]=l[i]
+	            i+=1
+	            k+=1
+	 
+	        while (j<len(r)):
+	            arr[k]=r[j]
+	            j+=1
+	            k+=1
+	
+	def find_single(arr,n,K):
+	    flag=1
+	    count=1
+	    for i in range(0,n-1):
+	        if(arr[i]==arr[i+1]):
+	            count+=1
+	        else:
+	            if(count==K):
+	                count=1
+	            elif(count==1):
+	                flag=0
+	                break
+	    if(flag==0):
+	        return arr[i]
+	    else:
+	        return arr[n-1]
+	    
+	
+	K=int(input())
+	arr=list(map(int,input().split()))
+	merge_sort(arr)
+	count=find_single(arr,len(arr),K)
+	print(count)
+
+ ![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/e97f635b-0728-4c75-b347-56424d0efde7)
+
+
+ 2.Given the participants' score sheet for your University Sports Day, you are required to find the runner-up score. You are given n scores. Store them in a list and find the score of the runner-up.
+
+
+	if __name__ == '__main__':
+	    n = int(input())
+	    arr = list(map(int, input().split()))
+	    
+	    max=-101
+	    for i in range(0,n):
+	        if(arr[i]>max):
+	            max=arr[i]
+	    
+	    sec_max=-101
+	    for i in range(0,n):
+	        if(arr[i]>sec_max and arr[i]<max):
+	            sec_max=arr[i]
+	    
+	    print(sec_max)
+
+     ![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/b20c9130-f0fb-4b85-8496-688a3837109d)
 
 
 
