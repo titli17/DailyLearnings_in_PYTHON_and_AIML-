@@ -2995,6 +2995,13 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	    print("NO")
 
 
+### DAY 20:
+
+Revised learnings of Day 14 and 15 (TREES)
+
+### DAY 21:
+
+
 
 
 
