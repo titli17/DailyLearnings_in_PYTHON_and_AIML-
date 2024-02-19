@@ -1368,19 +1368,6 @@ Output:
 ['8', '20', '12', '25', '40', '30', '22']
 
 
-##### Deleting the Nodes :
-
-To delete a node from a binary tree in Python, you need to consider different cases:
-
-1.If the node to be deleted is a leaf node (no children), simply remove it from its parent.
-
-2.If the node to be deleted has only one child, replace the node with its child.
-
-3.If the node to be deleted has two children, find the inorder successor (or predecessor), copy its data to the node to be deleted, and then delete the inorder successor (or predecessor).
-
-
-
-
 
 #### Binary Search Trees:
 
@@ -2999,18 +2986,115 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 
 Revised learnings of Day 14 and 15 (TREES)
 
+
+
 ### DAY 21:
 
+##### Deleting a Node in Binary Tree:
 
+To delete a node from a binary tree in Python, you need to consider different cases:
+
+1.If the node to be deleted is a leaf node (no children), simply remove it from its parent.
+
+2.If the node to be deleted has only one child, replace the node with its child.
+
+3.If the node to be deleted has two children, find the inorder successor (or predecessor), copy its data to the node to be deleted, and then delete the inorder successor (or predecessor).
 
 
 
     
 
+##### Deleting a Node in Binary Search Tree:
 
+To delete a node from a binary search tree (BST) in Python, you need to consider different cases:
 
+1.If the node to be deleted is a leaf node (no children), simply remove it from its parent.
 
+2.If the node to be deleted has only one child, replace the node with its child.
 
+3.If the node to be deleted has two children, find the inorder successor (or predecessor), copy its data to the node to be deleted, and then delete the inorder successor (or predecessor).
+
+	class TreeNode:
+	    def __init__(self, key):
+	        self.key = key
+	        self.left = None
+	        self.right = None
+	
+	
+	def insert(root,x):
+	    if root is None:
+	        return (TreeNode(x))
+	    else:
+	        if(root.key<x):
+	            root.right=insert(root.right,x)
+	        else:
+	            root.left=insert(root.left,x)
+	    return root
+	
+	def inorder_traversal(root):
+	    result = []
+	    if root:
+	        result = inorder_traversal(root.left)
+	        result.append(root.key)
+	        result += inorder_traversal(root.right)
+	    return result
+	
+	def deleteNode(root, k):
+	    if root is None:
+	        return root
+	 
+	    if root.key > k:
+	        root.left = deleteNode(root.left, k)
+	        return root
+	    elif root.key < k:
+	        root.right = deleteNode(root.right, k)
+	        return root
+	
+	    if root.left is None:
+	        temp = root.right
+	        del root
+	        return temp
+	    elif root.right is None:
+	        temp = root.left
+	        del root
+	        return temp
+	    else:
+	        succParent = root
+	        succ = root.right
+	        while succ.left is not None:
+	            succParent = succ
+	            succ = succ.left
+	
+	    if succParent != root:
+	            succParent.left = succ.right
+	    else:
+	        succParent.right = succ.right
+	    root.key = succ.key
+	    del succ
+	    return root
+	
+	# Example usage:
+	A=TreeNode(50)
+	
+	A=insert(A,30)
+	A=insert(A,20)
+	A=insert(A,40)
+	A=insert(A,70)
+	A=insert(A,60)
+	
+	print(inorder_traversal(A))
+	
+	root = deleteNode(A, 20)
+	print(inorder_traversal(A))
+	
+	root = deleteNode(A, 70)
+	print(inorder_traversal(A))
+	
+	root = deleteNode(A, 50)
+	
+	print(inorder_traversal(A))
+	
+	
 
 
 
