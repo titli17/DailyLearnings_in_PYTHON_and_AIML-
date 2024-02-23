@@ -2002,7 +2002,13 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	print("After sorting :",arr)
 	
 
-15.Find common elements in three sorted arrays.
+
+	
+### DAY 17:
+
+ #### Top 50 DSA questions on Arrays continued:
+
+ 15.Find common elements in three sorted arrays.
 
 	'''Given three Sorted arrays in non-decreasing order, print all common
 	elements in these arrays.
@@ -2082,10 +2088,6 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	
 	arr6=rem_dupli(arr4,n1+n2+n3)
 	print("Common elements :",arr6)
-	
-### DAY 17:
-
- #### Top 50 DSA questions on Arrays continued:
 
  16.Find the first repeating element in an array of integers.
 
@@ -2281,6 +2283,16 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	else:
 	    print("Subarray with given sum :",arr[i:p+1])
 
+
+
+
+
+### DAY 18:
+
+ #### Top 50 DSA questions on Arrays continued:
+
+
+ 
 21.Maximum Product Subarray.
 
 	'''Given an array that contains both positive and negative integers, the task
@@ -2435,13 +2447,6 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	    
 	print("Number of jumps :",count)
 
-
-
-
-### DAY 18:
-
- #### Top 50 DSA questions on Arrays continued:
-
 25.The Stock Span Problem.
 
 	'''The stock span problem is a financial problem where we have a series of N
@@ -2497,260 +2502,6 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	print("Span :",arr1)
 
 
-26.Find first non-repeating element in a given Array of integers.
-
-	'''Given an array of integers of size N, the task is to find the first
-	non-repeating element in this array. 
-	
-	Examples:
-	
-	Input: {-1, 2, -1, 3, 0}
-	Output: 2
-	Explanation: The first number that does not repeat is : 2
-	
-	Input: {9, 4, 9, 6, 7, 4}
-	Output: 6
-	'''
-	
-	n=int(input("Enter the number of elements :"))
-	arr=[]
-	print("Enter the elements :")
-	for i in range(0,n):
-	    a=int(input())
-	    arr.append(a)
-	print("Array :",arr)
-	
-	arr1=[]
-	arr2=[]
-	for i in arr:
-	    if i not in arr1:
-	        arr1.append(i)
-	    else:
-	        arr2.append(i)
-	
-	for i in range(0,len(arr1)):
-	    flag=1
-	    for j in range(0,len(arr2)):
-	        if(arr1[i]==arr2[j]):
-	            flag=0
-	            break
-	        else:
-	            flag=1
-	    if(flag==1):
-	        break
-	
-	print("First non-repeating element :",arr1[i])
-	
-	
-27.Find the row with maximum number of 1s.
-
-	'''Given a boolean 2D array, where each row is sorted. Find the row with the
-	maximum number of 1s. 
-	
-	Example:  
-	
-	Input matrix :          0 1 1 1
-	                        0 0 1 1
-	                        1 1 1 1  // this row has maximum 1s
-	                        0 0 0 0
-	Output: 2
-	'''
-	
-	
-	r=int(input("Enter the number of rows :"))
-	c=int(input("Enter the number of columns :"))
-	print("Enter the elements :")
-	arr=[]
-	for i in range(0,r):
-	    arr1=[]
-	    for j in range(0,c):
-	        a=int(input())
-	        arr1.append(a)
-	    arr.append(arr1)
-	
-	print("Matrix :")
-	for i in range(0,r):
-	    for j in range(0,c):
-	        print(arr[i][j],end=" ")
-	    print("\n")
-	
-	flag=0
-	a=[]
-	p=r
-	for i in range(0,c):
-	    for j in range(0,p):
-	        if(arr[j][i]==1):
-	            a.append(j)
-	            p=i
-	            flag=1
-	            
-	    if(flag==1):
-	        break
-	print("Row with maximum number of 1's : ",end="")
-	for i in range(0,len(a)):
-	    print(a[i],end=" ")
-
-
-28.Find whether an array is subset of another array.
-
-	'''Given two arrays: arr1[0..m-1] and arr2[0..n-1]. Find whether arr2[] is a
-	subset of arr1[] or not. Both arrays are not in sorted order. It may be
-	assumed that elements in both arrays are distinct.
-	
-	Examples: 
-	
-	Input: arr1[] = {11, 1, 13, 21, 3, 7}, arr2[] = {11, 3, 7, 1} 
-	Output: arr2[] is a subset of arr1[]
-	
-	Input: arr1[] = {1, 2, 3, 4, 5, 6}, arr2[] = {1, 2, 4} 
-	Output: arr2[] is a subset of arr1[]
-	
-	'''
-	
-	n1=int(input("Enter the number of elements of 1st array :"))
-	arr1=[]
-	print("Enter the elements :")
-	for i in range(0,n1):
-	    a=int(input())
-	    arr1.append(a)
-	print("Array 1 :",arr1)
-	
-	n2=int(input("Enter the number of elements of 2nd array :"))
-	arr2=[]
-	print("Enter the elements :")
-	for i in range(0,n2):
-	    a=int(input())
-	    arr2.append(a)
-	print("Array 2 :",arr2)
-	
-	flag=1
-	if(n1>n2):
-	    for i in range(0,n2):
-	        for j in range(0,n1):
-	            if(arr2[i]==arr1[j]):
-	                flag=0
-	                break
-	            else:
-	                flag=1
-	    if(flag==0):
-	        print("arr2[] is a subset of arr1[]")
-	    else:
-	        print("arr2[] is not a subset of arr1[]")
-
-
-29.Majority Element.
-
-	'''Find the majority element in the array. A majority element in an array A[]
-	of size n is an element that appears more than n/2 times (and hence there is
-	at most one such element). 
-	
-	Examples : 
-	
-	Input : A[]={3, 3, 4, 2, 4, 4, 2, 4, 4}
-	Output : 4
-	Explanation: The frequency of 4 is 5 which is greater than the half of the
-	size of the array size. 
-	
-	Input : A[] = {3, 3, 4, 2, 4, 4, 2, 4}
-	Output : No Majority Element
-	Explanation: There is no element whose frequency is greater than the half of
-	the size of the array size.
-	
-	'''
-	
-	def sort(arr,n):
-	    for i in range(0,n-1):
-	        for j in range(i+1,n):
-	            if(arr[i]>arr[j]):
-	                a=arr[i]
-	                arr[i]=arr[j]
-	                arr[j]=a
-	
-	    return arr
-	
-	def major(arr,n):
-	    a=n//2
-	    maxi=0
-	    i=0
-	    while(i<n):
-	        count=1
-	        if(i==n-1):
-	            break
-	        else:
-	            for j in range(i+1,n):
-	                if(arr[i]==arr[j]):
-	                    count+=1
-	                else:
-	                    i=j+1
-	                    break
-	            maxi=max(count,maxi)
-	            if(maxi>a):
-	                break
-	    return maxi,arr[i]
-	    
-	
-	n=int(input("Enter the number of elements :"))
-	arr=[]
-	print("Enter the elements :")
-	for i in range(0,n):
-	    a=int(input())
-	    arr.append(a)
-	print("Array :",arr)
-	
-	arr=sort(arr,n)
-	
-	maxi,b=major(arr,n)
-	print(maxi)
-	if(maxi>n//2):
-	    print("Majority element :",b)
-	else:
-	    print("There is no majority element.")
-
-
-30.Find the missing and repeating number.
-
-	'''Given an unsorted array of size n. Array elements are in the range of 1 to n.
-	One number from set {1, 2, …n} is missing and one number occurs twice in the
-	array. Find these two numbers.
-	
-	Examples: 
-	
-	Input: arr[] = {3, 1, 3}
-	Output: Missing = 2, Repeating = 3
-	Explanation: In the array, 2 is missing and 3 occurs twice 
-	
-	Input: arr[] = {4, 3, 6, 2, 1, 1}
-	Output: Missing = 5, Repeating = 1
-	'''
-	
-	def bubsort(arr,n):
-	    for i in range(0,n):
-	        for j in range(i+1,n):
-	            if(arr[i]>arr[j]):
-	                a=arr[i]
-	                arr[i]=arr[j]
-	                arr[j]=a
-	
-	n=int(input("Enter the number of elements :"))
-	arr=[]
-	print("Enter the elements :")
-	for i in range(n):
-	    a=int(input())
-	    arr.append(a)
-	print("Array :",arr)
-	
-	bubsort(arr,n)
-	
-	arr1=[]
-	for i in range(0,n-1):
-	    if(arr[i]==arr[i+1]):
-	        print("Repeating element :",arr[i])
-	        break
-	
-	for i in range (1,n+1):
-	    if i not in arr:
-	        print("Missing element :",i)
-	        break
 	
 
 ### DAY 19:
@@ -3276,6 +3027,530 @@ You only know the value of K and the room number list.
 
      ![image](https://github.com/titli17/DailyLearnings_in_PYTHON_and_AIML-/assets/96014974/b20c9130-f0fb-4b85-8496-688a3837109d)
 
+
+### DAY 22:
+
+ #### Top 50 DSA questions on Arrays continued:
+
+
+26.Find first non-repeating element in a given Array of integers.
+
+	'''Given an array of integers of size N, the task is to find the first
+	non-repeating element in this array. 
+	
+	Examples:
+	
+	Input: {-1, 2, -1, 3, 0}
+	Output: 2
+	Explanation: The first number that does not repeat is : 2
+	
+	Input: {9, 4, 9, 6, 7, 4}
+	Output: 6
+	'''
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	arr1=[]
+	arr2=[]
+	for i in arr:
+	    if i not in arr1:
+	        arr1.append(i)
+	    else:
+	        arr2.append(i)
+	
+	for i in range(0,len(arr1)):
+	    flag=1
+	    for j in range(0,len(arr2)):
+	        if(arr1[i]==arr2[j]):
+	            flag=0
+	            break
+	        else:
+	            flag=1
+	    if(flag==1):
+	        break
+	
+	print("First non-repeating element :",arr1[i])
+	
+	
+27.Find the row with maximum number of 1s.
+
+	'''Given a boolean 2D array, where each row is sorted. Find the row with the
+	maximum number of 1s. 
+	
+	Example:  
+	
+	Input matrix :          0 1 1 1
+	                        0 0 1 1
+	                        1 1 1 1  // this row has maximum 1s
+	                        0 0 0 0
+	Output: 2
+	'''
+	
+	
+	r=int(input("Enter the number of rows :"))
+	c=int(input("Enter the number of columns :"))
+	print("Enter the elements :")
+	arr=[]
+	for i in range(0,r):
+	    arr1=[]
+	    for j in range(0,c):
+	        a=int(input())
+	        arr1.append(a)
+	    arr.append(arr1)
+	
+	print("Matrix :")
+	for i in range(0,r):
+	    for j in range(0,c):
+	        print(arr[i][j],end=" ")
+	    print("\n")
+	
+	flag=0
+	a=[]
+	p=r
+	for i in range(0,c):
+	    for j in range(0,p):
+	        if(arr[j][i]==1):
+	            a.append(j)
+	            p=i
+	            flag=1
+	            
+	    if(flag==1):
+	        break
+	print("Row with maximum number of 1's : ",end="")
+	for i in range(0,len(a)):
+	    print(a[i],end=" ")
+
+
+28.Find whether an array is subset of another array.
+
+	'''Given two arrays: arr1[0..m-1] and arr2[0..n-1]. Find whether arr2[] is a
+	subset of arr1[] or not. Both arrays are not in sorted order. It may be
+	assumed that elements in both arrays are distinct.
+	
+	Examples: 
+	
+	Input: arr1[] = {11, 1, 13, 21, 3, 7}, arr2[] = {11, 3, 7, 1} 
+	Output: arr2[] is a subset of arr1[]
+	
+	Input: arr1[] = {1, 2, 3, 4, 5, 6}, arr2[] = {1, 2, 4} 
+	Output: arr2[] is a subset of arr1[]
+	
+	'''
+	
+	n1=int(input("Enter the number of elements of 1st array :"))
+	arr1=[]
+	print("Enter the elements :")
+	for i in range(0,n1):
+	    a=int(input())
+	    arr1.append(a)
+	print("Array 1 :",arr1)
+	
+	n2=int(input("Enter the number of elements of 2nd array :"))
+	arr2=[]
+	print("Enter the elements :")
+	for i in range(0,n2):
+	    a=int(input())
+	    arr2.append(a)
+	print("Array 2 :",arr2)
+	
+	flag=1
+	if(n1>n2):
+	    for i in range(0,n2):
+	        for j in range(0,n1):
+	            if(arr2[i]==arr1[j]):
+	                flag=0
+	                break
+	            else:
+	                flag=1
+	    if(flag==0):
+	        print("arr2[] is a subset of arr1[]")
+	    else:
+	        print("arr2[] is not a subset of arr1[]")
+
+
+29.Majority Element.
+
+	'''Find the majority element in the array. A majority element in an array A[]
+	of size n is an element that appears more than n/2 times (and hence there is
+	at most one such element). 
+	
+	Examples : 
+	
+	Input : A[]={3, 3, 4, 2, 4, 4, 2, 4, 4}
+	Output : 4
+	Explanation: The frequency of 4 is 5 which is greater than the half of the
+	size of the array size. 
+	
+	Input : A[] = {3, 3, 4, 2, 4, 4, 2, 4}
+	Output : No Majority Element
+	Explanation: There is no element whose frequency is greater than the half of
+	the size of the array size.
+	
+	'''
+	
+	def sort(arr,n):
+	    for i in range(0,n-1):
+	        for j in range(i+1,n):
+	            if(arr[i]>arr[j]):
+	                a=arr[i]
+	                arr[i]=arr[j]
+	                arr[j]=a
+	
+	    return arr
+	
+	def major(arr,n):
+	    a=n//2
+	    maxi=0
+	    i=0
+	    while(i<n):
+	        count=1
+	        if(i==n-1):
+	            break
+	        else:
+	            for j in range(i+1,n):
+	                if(arr[i]==arr[j]):
+	                    count+=1
+	                else:
+	                    i=j+1
+	                    break
+	            maxi=max(count,maxi)
+	            if(maxi>a):
+	                break
+	    return maxi,arr[i]
+	    
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	arr=sort(arr,n)
+	
+	maxi,b=major(arr,n)
+	print(maxi)
+	if(maxi>n//2):
+	    print("Majority element :",b)
+	else:
+	    print("There is no majority element.")
+
+
+30.Find the missing and repeating number.
+
+	'''Given an unsorted array of size n. Array elements are in the range of 1 to n.
+	One number from set {1, 2, …n} is missing and one number occurs twice in the
+	array. Find these two numbers.
+	
+	Examples: 
+	
+	Input: arr[] = {3, 1, 3}
+	Output: Missing = 2, Repeating = 3
+	Explanation: In the array, 2 is missing and 3 occurs twice 
+	
+	Input: arr[] = {4, 3, 6, 2, 1, 1}
+	Output: Missing = 5, Repeating = 1
+	'''
+	
+	def bubsort(arr,n):
+	    for i in range(0,n):
+	        for j in range(i+1,n):
+	            if(arr[i]>arr[j]):
+	                a=arr[i]
+	                arr[i]=arr[j]
+	                arr[j]=a
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	bubsort(arr,n)
+	
+	arr1=[]
+	for i in range(0,n-1):
+	    if(arr[i]==arr[i+1]):
+	        print("Repeating element :",arr[i])
+	        break
+	
+	for i in range (1,n+1):
+	    if i not in arr:
+	        print("Missing element :",i)
+	        break
+
+
+  ### DAY 23:
+
+
+#### Stack:
+
+A stack is a linear data structure that stores items in a Last-In/First-Out (LIFO) or First-In/Last-Out (FILO) manner. In stack, a new element is added at one end and an element is removed from that end only. The insert and delete operations are often called push and pop.
+
+##### Applications of Stack:
+
+Passing parameters between function.
+Undo and Redo mechanism in text editors.
+Used for evaluating expressions consisting of operands and operators.
+Backtracking, i.e., to check parenthesis matching in an expression.
+It can also be used to convert one form of expression to another form.
+It can be used for systematic Memory Management.
+
+##### Common Operations of a Stack:
+
+1. Push: Adds an item to the stack.
+
+2. Pop: Removes an item from the top of the stack.
+
+3. Peek: Returns the value of the item at the top of the stack without poping(removing) the item.
+
+4. IsEmpty: Checks if the stack is empty.
+
+5. IsFull: Checks if the stack is full.
+
+6. Display: Prints all the items in the stack.
+
+##### Stack using Array in Python:
+
+	def isfull(stack,l1):
+	    if(len(stack)==l1):
+	        return 1
+	
+	def isempty(stack):
+	    if(len(stack)==0):
+	        return 2
+	
+	def push(stack,l1):
+	    if(isfull(stack,l1)==1):
+	        print("Stack is full.")
+	    else:
+	        a=int(input("Enter the element :"))
+	        stack.append(a)
+	
+	def pop(stack):
+	    if(isempty(stack)==2):
+	        print("Stack is empty.")
+	    else:
+	        stack.pop(len(stack)-1)
+	
+	stack=[]
+	l1=int(input("Enter the maximum capacity of the stack :"))
+	
+	print("Enter 1 to push.\nEnter 2 to pop.\nEnter 3 to peek.\nEnter 4 to check if stack is full.\nEnter 5 to check if stack is empty.Enter 6 to display the stack.\nEnter 0 to exit.")
+	
+	while(1):
+	    x=int(input("Enter your choice :"))
+	    if(x==0):
+	        break
+	    elif(x==1):
+	        push(stack,l1)
+	    elif(x==2):
+	        pop(stack)
+	    elif(x==3):
+	        print(stack[len(stack)-1])
+	    elif(x==4):
+	        if(isfull(stack,l1)==1):
+	            print("Stack is full.")
+	        else:
+	            print("Stack is not full.")
+	    elif(x==5):
+	        if(isempty(stack)==2):
+	            print("Stack is empty.")
+	        else:
+	            print("Stack is not empty.")
+	    elif(x==6):
+	        for i in range(len(stack)-1,-1,-1):
+	            print(stack[i])
+	    else:
+	        print("Invalid choice.")
+
+
+Infix notations are the most usual type of notations. This notation is typically employed when writing arithmetic expressions by hand. In the infix expression, we place the operator between the two operands it operates on.
+For example, to add A to B we will write A+B or B+A.
+To subtract D from C we will write C-D.
+
+
+In Prefix notation, the operator symbol is placed before its two operands. 
+For example. To add A to B we will write +AB or +BA.
+To subtract D from C we will write -CD.
+
+
+In Postfix notation, the operator symbol is placed after its two operands.
+For example. To add A to B we will write AB+ or BA+.
+To subtract D from C we will write CD-.
+
+
+### DAY 24:
+
+#### Queue:
+
+The queue is a linear data structure that stores items in a First In First Out (FIFO) manner. With a queue, the least recently added item is removed first. A good example of a queue is any queue of consumers for a resource where the consumer that came first is served first.
+
+##### Queue applications in Data Structure:
+
+1. Managing requests on a single shared resource such as CPU scheduling and disk scheduling
+2. Handling hardware or real-time systems interrupts
+3. Handling website traffic
+4. Routers and switches in networking
+5. Maintaining the playlist in media players
+
+##### Linear queue:
+
+A Linear Queue is generally referred to as Queue. Arranges the data in a linear pattern. The insertion and deletion operations are fixed i.e, done at the rear and front end respectively.
+
+##### Common Operations of a Queue:
+
+1. Enqueue: Adds an item from the back of the queue.
+
+2. Dequeue: Removes an item from the front of the queue.
+
+3. Front/Peek: Returns the value of the item in front of the queue without dequeuing (removing) the item.
+
+4. IsEmpty: Checks if the queue is empty.
+
+5. IsFull: Checks if the queue is full.
+
+6. Display: Prints all the items in the queue.
+
+##### Linear Queue using array in Python:
+
+	def isfull(l1,rear):
+	    if(rear==l1):
+	        return 1
+	
+	def isempty(front,rear):
+	    if(front==rear):
+	        return 2
+	
+	def enqueue(queue,l1,rear):
+	    if(isfull(l1,rear)==1):
+	        print("Queue is full.")
+	    else:
+	        a=int(input("Enter the element :"))
+	        queue.append(a)
+	
+	def dequeue(queue,front,rear):
+	    if(isempty(front,rear)==2):
+	        print("Queue is empty.")
+	    else:
+	        queue.pop(0)
+	
+	queue=[]
+	front=rear=-1
+	l1=int(input("Enter the maximum capacity of the queue :"))
+	print("Enter 1 to enqueue.\nEnter 2 to dequeue.\nEnter 3 to print the queue.\nEnter 0 to exit.")
+	print("Enter 4 to peek.\nEnter 5 to check if queue is full.\nEnter 6 to check if queue is empty.")
+	while(1):
+	    x=int(input("Enter your choice :"))
+	    if(x==0):
+	        break
+	    elif(x==1):
+	        rear+=1
+	        enqueue(queue,l1,rear)
+	    elif(x==2):
+	        front+=1
+	        dequeue(queue,front,rear)
+	    elif(x==3):
+	        print("Queue :",queue)
+	    elif(x==4):
+	        print("First element of the queue :",queue[front])
+	    elif(x==5):
+	        if(isfull(l1,rear)==1):
+	            print("Queue is full.")
+	        else:
+	            print("Queue is not full.")
+	    elif(x==6):
+	        if(isempty(front,rear)==2):
+	            print("Queue is empty.")
+	        else:
+	            print("Queue is not empty.")
+	    else:
+	        print("Invalid choice.")
+
+
+##### Circular Queue:
+
+A Circular Queue is an extended version of a normal queue where the last element of the queue is connected to the first element of the queue forming a circle. The operations are performed based on FIFO (First In First Out) principle. It is also called ‘Ring Buffer’. In a normal Queue, we can insert elements until queue becomes full. But once queue becomes full, we cannot insert the next element even if there is a space in front of queue.
+
+##### Common operations on Circular Queue:
+
+1. Front: Get the front item from the queue.
+
+2. Rear: Get the last item from the queue.
+
+3. Enqueue(value): This function is used to insert an element into the circular queue. In a circular queue, the new element is always inserted at the rear position. 
+Check whether the queue is full – [i.e., the rear end is in just before the front end in a circular manner].
+If it is full then display Queue is full. 
+If the queue is not full then, insert an element at the end of the queue.
+
+4. Dequeue() This function is used to delete an element from the circular queue. In a circular queue, the element is always deleted from the front position. 
+Check whether the queue is Empty.
+If it is empty then display Queue is empty.
+If the queue is not empty, then get the last element and remove it from the queue.
+
+
+##### Circular Queue using array in Python :
+
+	def isfull(queue,l1):
+	    if(len(queue)==l1):
+	        return 1
+	
+	def isempty(queue):
+	    if(len(queue)==0):
+	        return 2
+	
+	def enqueue(queue,l1):
+	    if(isfull(queue,l1)==1):
+	        print("Queue is full.")
+	    else:
+	        a=int(input("Enter the element :"))
+	        queue.append(a)
+	
+	def dequeue(queue):
+	    if(isempty(queue)==2):
+	        print("Queue is empty.")
+	    else:
+	        queue.pop(0)
+	
+	queue=[]
+	l1=int(input("Enter the maximum capacity of the queue :"))
+	print("Enter 1 to enqueue.\nEnter 2 to dequeue.\nEnter 3 to print the queue.\nEnter 0 to exit.")
+	print("Enter 4 to peek.\nEnter 5 to check if queue is full.\nEnter 6 to check if queue is empty.")
+	while(1):
+	    x=int(input("Enter your choice :"))
+	    if(x==0):
+	        break
+	    elif(x==1):
+	        enqueue(queue,l1)
+	    elif(x==2):
+	        dequeue(queue)
+	    elif(x==3):
+	        print("Queue :",queue)
+	    elif(x==4):
+	        print("First element of the queue :",queue[0])
+	    elif(x==5):
+	        if(isfull(queue,l1)==1):
+	            print("Queue is full.")
+	        else:
+	            print("Queue is not full.")
+	    elif(x==6):
+	        if(isempty(queue)==2):
+	            print("Queue is empty.")
+	        else:
+	            print("Queue is not empty.")
+	    else:
+        	print("Invalid choice.")
+
+  
 
 
 
