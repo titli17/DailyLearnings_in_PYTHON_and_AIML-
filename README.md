@@ -2679,58 +2679,6 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	    print("It is a panagram.")
 
 
-6.Check if a string can be obtained by rotating another string 2 places.
-
-	'''Given two strings, the task is to find if a string can be obtained by
-	rotating another string by two places. 
-	
-	Examples: 
-	
-	Input: string1 = “amazon”, string2 = “azonam” 
-	Output: Yes 
-	Explanation: Rotating string1 by 2 places in anti-clockwise gives the string2.
-	
-	
-	Input: string1 = “amazon”, string2 = “onamaz” 
-	Output: Yes 
-	Explanation: Rotating string1 by 2 places in clockwise gives the string2.
-	'''
-	
-	def compare(arr1,arr2,n):
-	    flag=0
-	    for i in range(0,n):
-	        if(arr1[i]==arr2[i]):
-	            continue
-	        else:
-	            flag=1
-	            break
-	    if(flag==1):
-	        return False
-	    else:
-	        return True
-	        
-	    
-	str1=input("Enter string 1 :")
-	str2=input("Enter string 2 :")
-	
-	str3=[]
-	str3.append(str2[len(str2)-2])
-	str3.append(str2[len(str2)-1])
-	for i in range(0,len(str1)-2):
-	    str3.append(str2[i])
-	
-	
-	str5=[]
-	for i in range(2,len(str2)):
-	    str5.append(str2[i])
-	str5.append(str2[0])
-	str5.append(str2[1])
-	
-	
-	if(compare(str3,str1,len(str1)) or compare(str5,str1,len(str1))):
-	    print("Yes")
-	else:
-	    print("NO")
 
 
 ### DAY 20:
@@ -3834,6 +3782,60 @@ If the queue is not empty, then get the last element and remove it from the queu
 
  #### Top 50 DSA questions on Strings continued:
 
+6.Check if a string can be obtained by rotating another string 2 places.
+
+	'''Given two strings, the task is to find if a string can be obtained by
+	rotating another string by two places. 
+	
+	Examples: 
+	
+	Input: string1 = “amazon”, string2 = “azonam” 
+	Output: Yes 
+	Explanation: Rotating string1 by 2 places in anti-clockwise gives the string2.
+	
+	
+	Input: string1 = “amazon”, string2 = “onamaz” 
+	Output: Yes 
+	Explanation: Rotating string1 by 2 places in clockwise gives the string2.
+	'''
+	
+	def compare(arr1,arr2,n):
+	    flag=0
+	    for i in range(0,n):
+	        if(arr1[i]==arr2[i]):
+	            continue
+	        else:
+	            flag=1
+	            break
+	    if(flag==1):
+	        return False
+	    else:
+	        return True
+	        
+	    
+	str1=input("Enter string 1 :")
+	str2=input("Enter string 2 :")
+	
+	str3=[]
+	str3.append(str2[len(str2)-2])
+	str3.append(str2[len(str2)-1])
+	for i in range(0,len(str1)-2):
+	    str3.append(str2[i])
+	
+	
+	str5=[]
+	for i in range(2,len(str2)):
+	    str5.append(str2[i])
+	str5.append(str2[0])
+	str5.append(str2[1])
+	
+	
+	if(compare(str3,str1,len(str1)) or compare(str5,str1,len(str1))):
+	    print("Yes")
+	else:
+	    print("NO")
+
+
 7.Anagram Strings.
 
 	'''Given two strings, check if the two strings are anagrams of each other or not, i.e.e, count of every letter in both the words must be equal.
@@ -3931,6 +3933,69 @@ If the queue is not empty, then get the last element and remove it from the queu
 	            maxi=max(maxi,count)
 	            break
 	print("Length of the longest substring without any repeating characters :",maxi)
+
+
+ 9.Given a string. Count the number of characters present in that string.
+
+	 '''Example:
+	
+	 Input: s="AAAAbbbUUk
+	
+	 Output: 4A3b2U1k
+	 '''
+	
+	
+	
+	arr=input("Enter the string :")
+	j=0
+	p=1
+	while(j<len(arr)-1):
+	    c=1
+	    for k in range(j+1,len(arr)):
+	        if(arr[j]==arr[k]):
+	            c+=1
+	        else:
+	            print(c,end="")
+	            print(arr[j],end="")
+	            j=k
+	            break
+	    p=c
+	    if(k==len(arr)-1):
+	        break
+	
+	if(j==len(arr)-1):
+	    print("1",end="")
+	    print(arr[j])
+	else:
+	    print(p,end="")
+	    print(arr[j])
+
+
+10.Given a string. Return True if it is palindrome (i.e., it remains the same on reading from both sides), or false otherwise.
+
+	'''Example:
+	
+	Input: malayalam
+	
+	Output: True
+	
+	Input: geeks
+	
+	Output: False
+	'''
+	
+	str=input("Enter a string : ")
+	str1=str[::-1]
+	if(str==str1):
+	    print("TRUE!\nIt is palindrome.")
+	else:
+	    print("FALSE!\nIt is not palindrome.")
+
+
+### DAY 27:
+
+
+	
 	
 
 	
