@@ -1430,7 +1430,7 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 
  ### DAY 16:
 
- #### Top 50 DSA questions on Arrays:
+ #### DSA questions on Arrays:
 
 
 1.Find a peak element which is not smaller than its neighbours.
@@ -1689,7 +1689,7 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 
  ### DAY 17:
 
- #### Top 50 DSA questions on Arrays continued:
+ #### DSA questions on Arrays continued:
 
  8.Find Subarray with given sum.
 
@@ -2006,7 +2006,7 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 	
 ### DAY 17:
 
- #### Top 50 DSA questions on Arrays continued:
+ #### DSA questions on Arrays continued:
 
  15.Find common elements in three sorted arrays.
 
@@ -2289,7 +2289,7 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 
 ### DAY 18:
 
- #### Top 50 DSA questions on Arrays continued:
+ #### DSA questions on Arrays continued:
 
 
  
@@ -2506,7 +2506,7 @@ To delete a node from a binary search tree (BST) in Python, you need to consider
 
 ### DAY 19:
 
- #### Top 50 DSA questions on Strings:
+ #### DSA questions on Strings:
 
  1.Reverse words in a given string.
 
@@ -2978,7 +2978,7 @@ You only know the value of K and the room number list.
 
 ### DAY 22:
 
- #### Top 50 DSA questions on Arrays continued:
+ #### DSA questions on Arrays continued:
 
 
 26.Find first non-repeating element in a given Array of integers.
@@ -3501,7 +3501,7 @@ If the queue is not empty, then get the last element and remove it from the queu
 
 ### DAY 25:
 
- #### Top 50 DSA questions on Arrays continued:
+ #### DSA questions on Arrays continued:
 
 31.Rotate array by 90 degrees clockwise.
 
@@ -3780,7 +3780,7 @@ If the queue is not empty, then get the last element and remove it from the queu
 
 ### DAY 26:
 
- #### Top 50 DSA questions on Strings continued:
+ #### DSA questions on Strings continued:
 
 6.Check if a string can be obtained by rotating another string 2 places.
 
@@ -3993,6 +3993,167 @@ If the queue is not empty, then get the last element and remove it from the queu
 
 
 ### DAY 27:
+
+ #### DSA questions on Arrays continued:
+
+
+37.Power of 2 or not.
+
+	'''Given an integer n, return True if it is a power of 2, otherwise return false.
+	
+	Input: n=1
+	
+	Output: True
+	
+	Input: 16
+	
+	Output: True
+	
+	Input: 6
+	
+	Output: False
+	'''
+	
+	n=int(input("Enter a number :"))
+	flag=1
+	if (n==1):
+	    flag=0
+	else:
+	    while(n>1):
+	        if(n%2==0):
+	            flag=0
+	        else:
+	            flag=1
+	            break
+	        n=n/2
+	
+	if(flag==0):
+	    print("True.\nIt is a power of 2.")
+	else:
+	    print("False.\nIt is not a power of 2.")
+
+
+38.Given a row-wise sorted matrix of size rxc, where r is the no. of rows and c is the no. of columns. Find the median in the given matrix. Assume rxc is odd.
+
+	'''Input:
+	
+	r=3
+	
+	c=3
+	
+	1 4 9
+	
+	2 5 6
+	
+	3 8 7
+	
+	Output: Median=5
+	'''
+	
+	#row-wise sorted matrix
+	#assumption :- r*c is odd
+	
+	r=int(input("Enter the number of rows :"))
+	c=int(input("Enter the number of columns :"))
+	print("Enter the elements :")
+	
+	arr=[]
+	list1=[]
+	
+	for i in range(r):
+	    arr1=[]
+	    for j in range(c):
+	        a=int(input())
+	        arr1.append(a)
+	        list1.append(a)
+	    arr.append(arr1)
+	
+	print("Matrix :")
+	for i in range(r):
+	    for j in range(c):
+	        print(arr[i][j],end=" ")
+	    print("\n")
+	
+	list1=sorted(list1)
+	
+	index=int(((r*c)-1)/2)
+	
+	print("Median =",list1[index])
+
+
+39.Count maximum consecutive 1's in the array.
+
+	'''Input: Prices={1,1,0,1,1,1}
+	
+	Output: 3
+	'''
+	
+	def count(arr,n):
+	    count=p=0
+	    for i in range(0,n):
+	        if(arr[i]==1):
+	            count+=1
+	        else:
+	            if(p<count):
+	                p=count
+	            count=0
+	    if(p>count):
+	        return p
+	    else:
+	        return count
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	num=count(arr,n)
+	print("Maximum number of consecutive 1's in the array is",num,".")
+	
+
+40.Divide two integers without using multiplication, division and mod operator
+
+	'''Given two integers say a and b. Find the quotient after dividing a by b without using multiplication, division, and mod operator.
+	
+	Example: 
+	
+	Input : a = 10, b = 3
+	
+	Output : 3
+	
+	Input : a = 43, b = -8
+	
+	Output :  -5 
+	'''
+	
+	n=int(input("Enter the dividend :"))
+	m=int(input("Enter the divisor :"))
+	
+	m1=n1=0
+	
+	if(m<0):
+	    m1-=m
+	else:
+	    m1=m
+	
+	if(n<0):
+	    n1-=n
+	else:
+	    n1=n
+	    
+	count=0
+	while(n1>=m1):
+	    count+=1
+	    n1-=m1
+	
+	if((m<0 and n<0) or(m>0 and n>0)):
+	        print("Quotient =",count)
+	else:
+	    print("Quotient =",0-count)
+
+
 
 
 	
