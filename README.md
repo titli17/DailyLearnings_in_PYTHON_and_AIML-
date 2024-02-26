@@ -3550,9 +3550,393 @@ If the queue is not empty, then get the last element and remove it from the queu
 	    else:
         	print("Invalid choice.")
 
-  
+
+### DAY 25:
+
+ #### Top 50 DSA questions on Arrays continued:
+
+31.Rotate array by 90 degrees clockwise.
+
+    '''Given a matrix, your task is to rotate the matrix by 90 degrees in clockwise direction.
+
+    Example: Imput: [[1,2,3],[4,5,6],[9,6,3]]
+
+    Output: [[7,4,1],[8,5,2],[9,6,3]]'''
+
+    def printing(mat,r,c):
+    print("\nMatrix :")
+    for i in range(0,r):
+        for j in range(0,c):
+            print(mat[i][j],end=" ")
+        print("\n")
+
+	def rotate(mat1,r,c):
+	    mat2=[]
+	    for i in range(0,c):
+	        a=[]
+	        for j in range(0,r):
+	            b=mat1[r-1-j][i]
+	            a.append(b)
+	        mat2.append(a)
+	    return mat2
+	
+	r=int(input("Enter the number of rows :"))
+	c=int(input("Enter the number of columns :"))
+	mat1=[]
+	print("Enter the elements :")
+	for i in range(0,r):
+	    a=[]
+	    for j in range(0,c):
+	        b=int(input())
+	        a.append(b)
+	    mat1.append(a)
+	printing(mat1,r,c)
+	    
+	mat2=rotate(mat1,r,c)
+	print("After 90 degrees clockwise rotation :")
+	printing(mat2,c,r)
 
 
+32.Finding the next lexicographically greater permutation.
+
+	'''Given an array of integers, rearrange the numbers of the given array into the lexicographicallynext greater greater permutationof numbers. If such an arrangement does not exist, then rearrange
+	to the lowest possible order (i.e., sorted in ascending order).
+	
+	Example: Input: Arr[]={1,3,2}
+	
+	Output: Arr[]={2,1,3}                '''
+
+	def sort(arr,j,n):
+	    for i in range(j+1,n-1):
+	        for k in range(i+1,n):
+	            if(arr[i]>arr[k]):
+	                a=arr[i]
+	                arr[i]=arr[k]
+	                arr[k]=a
+	
+	def lexicography(arr,n):
+	    arr1=[]
+	    for i in range(0,n):
+	        arr1.append(arr[i])
+	    flag=1
+	    for i in range(n-1,0,-1):
+	        for j in range(i-1,-1,-1):
+	            if(arr[i]>arr[j]):
+	                a=arr[i]
+	                arr[i]=arr[j]
+	                arr[j]=a
+	                flag=0
+	                break
+	        if(flag==0):
+	            sort(arr,j,n)
+	            break
+	    flag1=0
+	
+	    if(arr1==arr):
+	        sort(arr1,-1,n)
+	        print("Lexicographically next greater permutation not available.\nNew Array :",arr1)
+	    else:
+	        print("Lexicographically next greater permutation :",arr)
+	    
+	
+	n=int(input("Enter the number of elements :"))
+	print("Enter the elements :")
+	arr=[]
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	lexicography(arr,n)
+
+
+ 33.Set matrix zero.
+
+	 '''Given a matrix if an element in the matrix is 0 then you will have to set its entire column and row to 0 and then return the matrix.
+	
+	 Example: Input: [[1,1,1],[1,0,1],[1,1,1]]
+	
+	 Output: [[1,0,1],[0,0,0],[1,0,1]]
+	 '''
+	
+	 def set_matrix_zero(arr,r,c):
+	    for i in range(0,r):
+	        for j in range(0,c):
+	            if(arr[i][j]==0):
+	                arr[i][j]='a'
+	    for i in range(0,r):
+	        for j in range(0,c):
+	            if(arr[i][j]=='a'):
+	                arr[i][j]=0
+	                for k in range(0,c):
+	                    if(arr[i][k]=='a'):
+	                        continue
+	                    else:
+	                        arr[i][k]=0
+	                for l in range(0,r):
+	                    if(arr[l][j]=='a'):
+	                        continue
+	                    else:
+	                        arr[l][j]=0
+	    return arr
+	
+	r=int(input("Enter the number of rows :"))
+	c=int(input("Enter the number of columns :"))
+	print("Enter the elements :")
+	arr=[]
+	for i in range(0,r):
+	    arr1=[]
+	    for j in range(0,c):
+	        a=int(input())
+	        arr1.append(a)
+	    arr.append(arr1)
+	print("\nMatrix:")
+	for i in range(0,r):
+	    for j in range(0,c):
+	        print(arr[i][j],end="  ")
+	    print("\n")
+	
+	arr=set_matrix_zero(arr,r,c)
+	print("New Matrix:")
+	for i in range(0,r):
+	    for j in range(0,c):
+	        print(arr[i][j],end="  ")
+	    print("\n")
+
+
+34.Minimum number of coins needed to make the change.
+
+	'''Given a value V, if we want to make a change for V Rs., and we have an infinite supply of each of the denominations in Indian currency, i.e., we have an infinite supply of {1,2,5,10,20,50,100,500,1000}
+	valued coins or notes, then what is the minimum number of coins or notes needed to make the change.
+	
+	Example: Input: V=70
+	
+	Output: 2
+	'''
+
+ 
+	coins=[1000,500,100,50,20,10,5,2,1]
+	
+	n=int(input("Enter the amount :"))
+	
+	arr=[]
+	count=0
+	i=0
+	while(n>0):
+	    if(n>=coins[i]):
+	        count+=1
+	        n-=coins[i]
+	        arr.append(coins[i])
+	    else:
+	        i+=1
+	print("Minimum number of denominations :",count)
+	j=p=0
+	while(j<len(arr)-1):
+	    c=1
+	    for k in range(j+1,len(arr)):
+	        if(arr[j]==arr[k]):
+	            c+=1
+	        else:
+	            print(c,"note/coin of",arr[j])
+	            j=k
+	            break
+	    p=c
+	    if(k==len(arr)-1):
+	        break
+	
+	print(p,"note/coin of",arr[j])
+
+
+ 35.Floor and ceiling value.
+
+	 '''You are given a sorted array arr of n integers and an integer x. Find the floor and the ceiling value of x in the arr[0...n-1]. The floor of x is the largest element in the array which is smaller than 
+	 or equal to x. The ceiling value of x is the smallesst element in the array greater than or equal to x.
+	
+	 Example: Input: 
+	 
+	 n=6
+	
+	 arr[]={3,4,4,7,8,10}
+	
+	 x=5
+	
+	 Output: 
+	 
+	 4 
+	
+	 7
+	 '''
+	
+	 
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements in sorted manner :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	
+	print("Array :",arr)
+	
+	x=int(input("Enter the value of x :"))
+	
+	flag=1
+	for i in range(n):
+	    if(arr[i]==x):
+	        flag=0
+	        break
+	    else:
+	        if(arr[i]>x):
+	            flag=1
+	            break
+	
+	if(flag==0):
+	    print("Floor value :",arr[i],"\nCeiling value :",arr[i])
+	else:
+	    print("Floor value :",arr[i-1],"\nCeiling value :",arr[i])
+
+
+36.Rearranging array elements.
+
+	'''You are given an array of integers, your task is to move all the zeros in the array to the end of the array and move non-negative inetgers to the front by maintaining their order.
+	
+	Example: Input: {1,0,2,3,0,4,0,1}
+	
+	Output: {1,2,3,4,1,0,0,0}
+	'''
+	
+	
+	def arrange(arr,n):
+	    arr1=[]
+	    count=0
+	    for i in range(0,n):
+	        if(arr[i]==0):
+	            count+=1
+	        else:
+	            arr1.append(arr[i])
+	    for i in range(0,count):
+	        arr1.append(0)
+	    print("New Array :",arr1)
+	    
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements:")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	arrange(arr,n)
+
+
+
+### DAY 26:
+
+ #### Top 50 DSA questions on Strings continued:
+
+7.Anagram Strings.
+
+	'''Given two strings, check if the two strings are anagrams of each other or not, i.e.e, count of every letter in both the words must be equal.
+	
+	Example: Input: CAT, ACT
+	
+	Output: Yes
+	
+	Input: RULES, LESRT
+	
+	Output: False
+	'''
+	
+	def merge_sort(arr):
+	    if (len(arr)>1):
+	        mid=len(arr)//2      
+	        l=arr[:mid]
+	        r=arr[mid:]
+	        merge_sort(l)
+	        merge_sort(r)
+	 
+	        i=0
+	        j=0
+	        k=0
+	        
+	        while ((i<len(l))and(j<len(r))):
+	            if (l[i]<=r[j]):
+	                arr[k]=l[i]
+	                i+=1
+	            else:
+	                arr[k]=r[j]
+	                j+=1
+	            k+=1
+	 
+	        while (i<len(l)):
+	            arr[k]=l[i]
+	            i+=1
+	            k+=1
+	 
+	        while (j<len(r)):
+	            arr[k]=r[j]
+	            j+=1
+	            k+=1
+	    return arr
+	
+	def anagram(str1,str2):
+	    if(len(str1)!=len(str2)):
+	        return 1
+	    else:
+	        l1=list(str1)
+	        l2=list(str2)
+	        l1=merge_sort(l1)
+	        l2=merge_sort(l2)
+	        flag=0
+	        for i in range(0,len(l1)):
+	            if(l1[i]!=l2[i]):
+	                flag=1
+	                break
+	            else:
+	                flag=0
+	        return flag
+	
+	str1=input("Enter first string :")
+	str2=input("Enter second string :")
+	
+	a=anagram(str1,str2)
+	if(a==0):
+	    print("TRUE\nThe 2 strings are anagrams.")
+	else:
+	    print("FALSE\nThe 2 strings are not anagrams.")
+	
+
+8.Given a String. Find the length of the longest substring without any repeating character.
+
+	'''Example:
+	
+	Input: s="abcabcbb"
+	
+	Output: 3
+	
+	Input: s="bbbbb"
+	
+	Output: 1
+	'''
+	
+	
+	s1=input("Enter the string :")
+	maxi=0
+	for i in range(0,len(s1)-1):
+	    count=1
+	    for j in range(i+1,len(s1)):
+	        if(s1[i]!=s1[j]):
+	            count+=1
+	        else:
+	            maxi=max(maxi,count)
+	            break
+	print("Length of the longest substring without any repeating characters :",maxi)
+	
+
+	
+	
+	
+	    
 
 
 
