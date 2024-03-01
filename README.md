@@ -4155,8 +4155,211 @@ If the queue is not empty, then get the last element and remove it from the queu
 
 
 
+### DAY 28:
 
+#### Searching algorithms:
+
+##### Linear Search:
+
+	n=int(input("Enter the number of elements :"))
+	print("Enter the elements :")
+	arr=[]
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
 	
+	s=int(input("Enter the element you want to search :"))
+	
+	flag=0
+	for i in range(0,n):
+	    if(s==arr[i]):
+	        flag=1
+	        break
+	    else:
+	        flag=0
+	if(flag==1):
+	    print("Element is present.\nIndex Position =",i)
+	else:
+	    print("Element is not present.")
+
+##### Binary Search:
+
+	n=int(input("Enter the number of elements :"))
+	print("Enter the elements :")
+	arr=[]
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	s=int(input("Enter the element you want to search :"))
+	
+	flag=0
+	for i in range(0,n):
+	    if(s==arr[i]):
+	        flag=1
+	        break
+	    else:
+	        flag=0
+	if(flag==1):
+	    print("Element is present.\nIndex Position =",i)
+	else:
+	    print("Element is not present.")
+
+
+### DAY 29:
+
+#### Sorting algorithms:
+
+##### Bubble Sort:
+
+	n=int(input("Enter the number of elements :"))
+	print("Enter the elements :")
+	arr=[]
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	for i in range(0,n-1):
+	    for j in range(i+1,n):
+	        if(arr[i]>arr[j]):
+	            a=arr[i]
+	            arr[i]=arr[j]
+	            arr[j]=a
+	print("Sorted Array :",arr)
+ 
+
+ ##### Insertion Sort:
+
+	 def insertionSort(arr,n):  
+	    if(n<=1):
+	        return None
+	    for i in range(1,n):  
+	        a=arr[i]  
+	        j=i-1
+	        while(j>=0 and a<=arr[j]):  
+	            arr[j+1]=arr[j]  
+	            j-=1
+	        arr[j+1]=a  
+	  
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the number of elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	insertionSort(arr,n)
+	print("After sorting :",arr)
+
+
+##### Selection Sort:
+
+	def selectionsort(arr,n):
+	    for i in range(0,n-1):
+	        small=i
+	        for j in range(i+1,n):
+	            if(arr[small]>arr[j]):
+	                small=j
+	        a=arr[i]
+	        arr[i]=arr[small]
+	        arr[small]=a
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the number of elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	selectionsort(arr,n)
+	print("Array after sorting :",arr)
+
+
+ ##### Merge Sort:
+
+	def merge_sort(arr):
+	    if(len(arr)>1):
+	        mid=len(arr)//2
+	        l=arr[:mid]
+	        r=arr[mid:]
+	        merge_sort(l)
+	        merge_sort(r)
+	
+	        i=j=k=0
+	
+	        while(i<len(l) and j<len(r)):
+	            if(l[i]<=r[j]):
+	                arr[k]=l[i]
+	                i+=1
+	            else:
+	                arr[k]=r[j]
+	                j+=1
+	            k+=1
+	
+	        while(i<len(l)):
+	            arr[k]=l[i]
+	            i+=1
+	            k+=1
+	
+	        while(j<len(r)):
+	            arr[k]=r[j]
+	            j+=1
+	            k+=1
+	
+	n=int(input("Enter the number of elements :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(0,n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	merge_sort(arr)
+	print("After sorting :",arr)
+	
+	
+##### Quick Sort:
+
+
+	def partition(arr,low,high):
+	    pivot = arr[high]
+	    i=low-1
+	 
+	    for j in range(low,high):
+	        if(arr[j]<=pivot):
+	            i=i+1
+	            (arr[i],arr[j])=(arr[j],arr[i])
+	 
+	    (arr[i+1],arr[high])=(arr[high],arr[i+1])
+	 
+	    return (i+1)
+	 
+	def quick_sort(arr,low,high):
+	    if(low<high):
+	        p=partition(arr,low,high)
+	        quick_sort(arr,low,p-1)
+	        quick_sort(arr,p+1,high)
+	
+	n=int(input("Enter the number of inputs :"))
+	arr=[]
+	print("Enter the elements :")
+	for i in range(n):
+	    a=int(input())
+	    arr.append(a)
+	print("Array :",arr)
+	
+	quick_sort(arr,0,n-1)
+	print("After sorting :",arr)
+	
+
+
+
+
+
+
 	
 
 	
